@@ -1,0 +1,28 @@
+Veterinary Mobile
+- Pages
+
+    - Registration Page
+        - For Person
+            - First page: title, first name, last name, email, birthdate, button „next“
+            - Next page: phone number, street, postal code,  city, country, button „animal registry“
+        - For Animal
+            - First page: name, race, birthdate, color, length, weight
+            - Next page: breed, gender, color, symptoms description
+    - Login Page for App
+        - Email or username
+        - Password
+        - Password forgotten
+
+- Widget types
+    - text field
+    - date picker
+    - phone number
+
+- Tools
+    - Validators
+        - For birthdate: date-picker            [X]
+        - For email: email-validator            [ ]
+        - For password: password-validator      [ ]
+        - For name: name-validator              [ ]
+        - For enum-type: enum-type-validator    [ ]
+
