@@ -24,6 +24,12 @@ class AppDropDownBuilder extends StatelessWidget {
         color: Colors.white,
         fontWeight: FontWeight.w400,
       ),
+      validator: (value) {
+        if (value == elements[elements.length - 1]) {
+          return '${elements[elements.length - 1].name} Not Accepted';
+        }
+        return null;
+      },
       dropdownColor: Colors.transparent.withOpacity(0.6),
       icon: const Icon(
         Icons.arrow_drop_down,

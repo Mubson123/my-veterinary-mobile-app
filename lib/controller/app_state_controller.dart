@@ -6,7 +6,7 @@ class AppStateController extends GetxController {
   @override
   void onReady() {
     Future.delayed( const Duration(milliseconds: 3000),() {
-      Get.offAllNamed(Routes.firstRegistrationPage);
+      Get.offAllNamed(Routes.personFirstRegistrationPage);
     });
     super.onReady();
   }

@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class AppSpace extends StatelessWidget {
@@ -6,8 +7,7 @@ class AppSpace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    if (size.width > 500.0) {
+    if (Get.width > 500.0) {
       return SizedBox(height: height * 2,);
     }
     return SizedBox(height: height,);

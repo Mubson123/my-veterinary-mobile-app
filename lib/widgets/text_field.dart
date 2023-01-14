@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppFormBuilderTextField extends StatelessWidget {
   const AppFormBuilderTextField({
     Key? key,
+    this.maxLines,
     required this.name,
     required this.keyboardType,
     required this.hintText,
@@ -12,6 +13,7 @@ class AppFormBuilderTextField extends StatelessWidget {
   }) : super(key: key);
   final String name;
   final String hintText;
+  final int? maxLines;
   final TextInputType keyboardType;
   final String responseToValidation;
   final bool Function(String?) appValidation;
@@ -20,6 +22,7 @@ class AppFormBuilderTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: name,
+      maxLines: maxLines,
       keyboardType: keyboardType,
       autocorrect: false,
       style: const TextStyle(

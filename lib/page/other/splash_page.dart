@@ -16,7 +16,7 @@ class SplashPage extends StatelessWidget {
       width: Get.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/rottweiler.jpeg'),
+          image: AssetImage('assets/images/best-friends.jpeg'),
           fit: BoxFit.cover,
         ),
       ),
