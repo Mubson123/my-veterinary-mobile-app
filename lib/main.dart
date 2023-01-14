@@ -1,10 +1,8 @@
 import 'package:get/get.dart';
 import '/page/other/unknown_route_page.dart';
-import 'binding/state_binding.dart';
 import 'navigation/routes.dart';
 import '/navigation/app_pages.dart';
 import 'package:flutter/material.dart';
-
 
 void main() {
   runApp(const MyApp());

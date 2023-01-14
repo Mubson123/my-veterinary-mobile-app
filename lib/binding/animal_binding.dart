@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import '/controller/animal_controller.dart';
 import '/data/animal/animal_provider.dart';
-
 import '../data/animal/animal_repository.dart';
 
 class AnimalBindings extends Bindings {

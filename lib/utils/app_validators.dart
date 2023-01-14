@@ -3,6 +3,7 @@ class AppValidators {
   static final RegExp digitOnlyVal = RegExp(r'^[0-9]*$');
   static final RegExp phoneVal = RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$');
   static final RegExp nameVal = RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
+  static final RegExp digitVal = RegExp(r"^(\d*\.)?\d+$");
   static final RegExp textOnly = RegExp(r'^[A-Za-z0-9]');
   static final RegExp passwordVal = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
   static final RegExp username = RegExp(r'^[a-zA-Z0-9][a-zA-Z0-9_.]+[a-zA-Z0-9]$');

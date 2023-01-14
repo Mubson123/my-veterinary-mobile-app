@@ -9,7 +9,7 @@ part of 'animal.dart';
 Animal _$AnimalFromJson(Map<String, dynamic> json) => Animal(
       json['id'] as String,
       json['name'] as String?,
-      json['race'] as String?,
+      json['type'] as String?,
       json['breed'] as String?,
       $enumDecodeNullable(_$GenderEnumMap, json['gender']),
       json['color'] as String?,
@@ -27,8 +27,8 @@ Animal _$AnimalFromJson(Map<String, dynamic> json) => Animal(
 Map<String, dynamic> _$AnimalToJson(Animal instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'race': instance.race,
       'breed': instance.breed,
+      'type': instance.type,
       'gender': _$GenderEnumMap[instance.gender],
       'color': instance.color,
       'length': instance.length,

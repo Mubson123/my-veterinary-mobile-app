@@ -32,11 +32,11 @@ class PersonController extends GetxController {
     return await _personRepository.getPersonByEmail(email);
   }
 
-  Future<dynamic> addPerson() async {
+  Future<Person> addPerson() async {
     return await _personRepository.savePerson(setPersonDto());
   }
 
-  Future<dynamic> updatePerson(String id) async {
+  Future<Person> updatePerson(String id) async {
     return await _personRepository.updatePersonById(id, setPersonDto());
   }
 

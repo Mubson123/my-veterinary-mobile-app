@@ -16,8 +16,8 @@ enum Gender {
 class Animal {
   String id;
   String? name;
-  String? race;
   String? breed;
+  String? type;
   Gender? gender;
   String? color;
   double? length;
@@ -29,7 +29,7 @@ class Animal {
   Animal(
     this.id,
     this.name,
-    this.race,
+    this.type,
     this.breed,
     this.gender,
     this.color,

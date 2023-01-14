@@ -8,8 +8,8 @@ part of 'animal_dto.dart';
 
 AnimalDto _$AnimalDtoFromJson(Map<String, dynamic> json) => AnimalDto(
       json['name'] as String?,
-      json['race'] as String?,
       json['breed'] as String?,
+      json['type'] as String?,
       $enumDecodeNullable(_$GenderEnumMap, json['gender']),
       json['color'] as String?,
       (json['length'] as num?)?.toDouble(),
@@ -25,8 +25,8 @@ AnimalDto _$AnimalDtoFromJson(Map<String, dynamic> json) => AnimalDto(
 
 Map<String, dynamic> _$AnimalDtoToJson(AnimalDto instance) => <String, dynamic>{
       'name': instance.name,
-      'race': instance.race,
       'breed': instance.breed,
+      'type': instance.type,
       'gender': _$GenderEnumMap[instance.gender],
       'color': instance.color,
       'length': instance.length,

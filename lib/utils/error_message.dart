@@ -11,7 +11,7 @@ class PersonErrorMessage {
 
 class AnimalErrorMessage {
   static const String name = 'Invalid Name';
-  static const String race = 'Invalid Race';
+  static const String type = 'Invalid Type';
   static const String breed = 'Invalid Breed';
   static const String gender = 'Invalid Gender';
   static const String color = 'Invalid Color';
