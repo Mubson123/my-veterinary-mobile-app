@@ -1,23 +1,21 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../person.dart';
-
 part 'person_dto.g.dart';
 
 @JsonSerializable()
 class PersonDto {
-  String? userTitle;
-  String? lastname;
+  String userTitle;
+  String lastname;
   String? firstname;
-  int? birthDay;
-  int? birthMonth;
-  int? birthYear;
-  String? phoneNumber;
-  String? email;
-  String? streetAndHouseNumber;
-  int? postalCode;
-  String? city;
-  String? country;
+  int birthDay;
+  int birthMonth;
+  int birthYear;
+  String phoneNumber;
+  String email;
+  String streetAndHouseNumber;
+  int postalCode;
+  String city;
+  String country;
 
   PersonDto(
     this.userTitle,

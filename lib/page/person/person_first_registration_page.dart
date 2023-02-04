@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '/controller/person_controller.dart';
 import 'package:flutter/material.dart';
 import '/widgets/widget_export.dart';
@@ -57,7 +58,7 @@ class PersonFirstRegistrationPage extends GetView<PersonController> {
                         keyboardType: TextInputType.name,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value) ||
-                                AppValidators.nameVal.hasMatch(value!)),
+                                !AppValidators.nameVal.hasMatch(value!)),
                         responseToValidation: PersonErrorMessage.firstname,
                       ),
                       AppSpace(height: Get.height * 0.01),
@@ -67,7 +68,7 @@ class PersonFirstRegistrationPage extends GetView<PersonController> {
                         keyboardType: TextInputType.name,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value) ||
-                                AppValidators.nameVal.hasMatch(value!)),
+                                !AppValidators.nameVal.hasMatch(value!)),
                         responseToValidation: PersonErrorMessage.lastname,
                       ),
                       AppSpace(height: Get.height * 0.01),
@@ -97,10 +98,13 @@ class PersonFirstRegistrationPage extends GetView<PersonController> {
                         width: Get.width,
                         radius: 30,
                         color: Colors.deepOrangeAccent.withOpacity(0.8),
-                        onPressed: () {
+                        onPressed: () async {
                           final isValid =
                               formKey.currentState!.saveAndValidate();
                           if (isValid) {
+                            final prefs = await SharedPreferences.getInstance();
+                            prefs.setString(AppFieldName.email,
+                                formKey.currentState!.value[AppFieldName.email]);
                             Get.toNamed(Routes.personSecondRegistrationPage);
                           }
                         },

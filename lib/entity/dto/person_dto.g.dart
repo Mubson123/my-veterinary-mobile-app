@@ -7,18 +7,18 @@ part of 'person_dto.dart';
 // **************************************************************************
 
 PersonDto _$PersonDtoFromJson(Map<String, dynamic> json) => PersonDto(
-      json['userTitle'] as String?,
-      json['lastname'] as String?,
+      json['userTitle'] as String,
+      json['lastname'] as String,
       json['firstname'] as String?,
-      json['birthDay'] as int?,
-      json['birthMonth'] as int?,
-      json['birthYear'] as int?,
-      json['phoneNumber'] as String?,
-      json['email'] as String?,
-      json['streetAndHouseNumber'] as String?,
-      json['postalCode'] as int?,
-      json['city'] as String?,
-      json['country'] as String?,
+      json['birthDay'] as int,
+      json['birthMonth'] as int,
+      json['birthYear'] as int,
+      json['phoneNumber'] as String,
+      json['email'] as String,
+      json['streetAndHouseNumber'] as String,
+      json['postalCode'] as int,
+      json['city'] as String,
+      json['country'] as String,
     );
 
 Map<String, dynamic> _$PersonDtoToJson(PersonDto instance) => <String, dynamic>{

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../navigation/routes.dart';
 import '/controller/person_controller.dart';
 import 'package:flutter/material.dart';
 import '/widgets/widget_export.dart';
@@ -74,7 +75,7 @@ class PersonSecondRegistrationPage extends GetView<PersonController> {
                         keyboardType: TextInputType.name,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value) ||
-                                AppValidators.nameVal.hasMatch(value!)),
+                                !AppValidators.nameVal.hasMatch(value!)),
                         responseToValidation: PersonErrorMessage.city,
                       ),
                       AppSpace(height: Get.height * 0.05),
@@ -113,16 +114,19 @@ class PersonSecondRegistrationPage extends GetView<PersonController> {
                               if (isValid) {
                                 final prefs =
                                     await SharedPreferences.getInstance();
-                                await controller.addPerson().then((value) {
-                                  if (value.id != null) {
-                                    prefs.setString(
-                                        AppUtilsName.userId, value.id!);
-                                  }
-                                  formKey.currentState!.reset();
-                                  controller
-                                      .personFirstPageFormKey.currentState!
-                                      .reset();
-                                });
+                                await controller.addPerson().then(
+                                  (value) {
+                                    if (value.id != null) {
+                                      prefs.setString(
+                                          AppUtilsName.userId, value.id!);
+                                    }
+                                    formKey.currentState!.reset();
+                                    controller
+                                        .personFirstPageFormKey.currentState!
+                                        .reset();
+                                    Get.offAllNamed(Routes.homePage);
+                                  },
+                                );
                               }
                             },
                             child: const Text(

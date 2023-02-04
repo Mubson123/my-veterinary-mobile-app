@@ -9,4 +9,5 @@ class Routes {
       '/animal-first-registration-page';
   static const String animalSecondRegistrationPage =
       '/animal-second-registration-page';
+  static const String homePage = '/home-page';
 }

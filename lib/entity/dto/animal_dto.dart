@@ -6,18 +6,18 @@ part 'animal_dto.g.dart';
 
 @JsonSerializable()
 class AnimalDto {
-  String? name;
-  String? breed;
+  String name;
+  String breed;
   String? type;
-  Gender? gender;
-  String? color;
+  Gender gender;
+  String color;
   double? length;
   double? weight;
   String? symptoms;
   int? day;
   int? month;
   int? year;
-  List<String>? ownersEmails;
+  List<String> ownersEmails;
 
   AnimalDto(
     this.name,
