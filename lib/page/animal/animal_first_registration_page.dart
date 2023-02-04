@@ -93,28 +93,53 @@ class AnimalFirstRegistrationPage extends GetView<AnimalController> {
                         elements: Gender.values,
                       ),
                       AppSpace(height: Get.height * 0.05),
-                      CustomButton(
-                        textColor: Colors.white,
-                        elevation: 3,
-                        height: 60,
-                        width: Get.width,
-                        radius: 30,
-                        color: Colors.deepOrangeAccent.withOpacity(0.8),
-                        onPressed: () {
-                          final isValid =
-                              formKey.currentState!.saveAndValidate();
-                          if (isValid) {
-                            Get.toNamed(Routes.animalSecondRegistrationPage);
-                          }
-                        },
-                        child: const Text(
-                          AppUtilsName.next,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          CustomButton(
+                            textColor: Colors.white,
+                            elevation: 3,
+                            height: 60,
+                            width: Get.width / 3,
+                            radius: 30,
+                            color: Colors.deepOrangeAccent.withOpacity(0.8),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: const Text(
+                              AppUtilsName.back,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ),
-                        ),
+                          CustomButton(
+                            textColor: Colors.white,
+                            elevation: 3,
+                            height: 60,
+                            width: Get.width / 3,
+                            radius: 30,
+                            color: Colors.deepOrangeAccent.withOpacity(0.8),
+                            onPressed: () {
+                              final isValid =
+                                  formKey.currentState!.saveAndValidate();
+                              if (isValid) {
+                                Get.toNamed(
+                                    Routes.animalSecondRegistrationPage);
+                              }
+                            },
+                            child: const Text(
+                              AppUtilsName.next,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

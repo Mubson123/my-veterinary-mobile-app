@@ -7,8 +7,6 @@ abstract class IPersonRepository {
 
   Future<Person> getPersonById(String id);
 
-  Future<Person> getPersonByEmail(String email);
-
   Future<Person> savePerson(PersonDto personDto);
 
   Future<Person> updatePersonById(String id, PersonDto personDto);
@@ -33,15 +31,6 @@ class PersonRepository implements IPersonRepository {
   @override
   Future<Person> getPersonById(String id) async {
     final response = await provider.getPersonById('/$id');
-    if (response.hasError) {
-      return Future.error(response.statusText!);
-    }
-    return response.body!;
-  }
-
-  @override
-  Future<Person> getPersonByEmail(String email) async {
-    final response = await provider.getPersonByEmail('/$email');
     if (response.hasError) {
       return Future.error(response.statusText!);
     }

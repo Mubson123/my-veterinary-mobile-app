@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:myveterinary/style/my_veterinary_app_themes.dart';
 import '/page/other/unknown_route_page.dart';
 import 'navigation/routes.dart';
 import '/navigation/app_pages.dart';
@@ -24,10 +25,8 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: 'My Veterinary Flutter App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: Routes.splashPage,
+        theme: MyVeterinaryAppThemes.light(),
+        initialRoute: Routes.homePage,
         unknownRoute: GetPage(
           name: Routes.unknownPage,
           page: () => const UnknownRoutePage(),

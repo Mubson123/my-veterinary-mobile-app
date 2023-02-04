@@ -6,11 +6,13 @@ class UnknownRoutePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text(
-        'There is a problem somewhere',
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline3,
-      ),),
+      body: Center(
+        child: Text(
+          'There is a problem somewhere',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline3,
+        ),
+      ),
     );
   }
 }

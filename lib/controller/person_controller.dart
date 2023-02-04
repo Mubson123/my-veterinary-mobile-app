@@ -28,29 +28,26 @@ class PersonController extends GetxController {
     return await _personRepository.getPersonById(id);
   }
 
-  Future<Person> getPersonEmail(String email) async {
-    return await _personRepository.getPersonByEmail(email);
-  }
-
   Future<Person> addPerson() async {
-    return await _personRepository.savePerson(setPersonDto());
+    return await _personRepository.savePerson(_setPersonDto());
   }
 
   Future<Person> updatePerson(String id) async {
-    return await _personRepository.updatePersonById(id, setPersonDto());
+    return await _personRepository.updatePersonById(id, _setPersonDto());
   }
 
   Future<dynamic> deletePersonById(String id) async {
     return await _personRepository.deletePersonById(id);
   }
 
-  PersonDto setPersonDto() {
+  PersonDto _setPersonDto() {
     final UserTitle title =
         personFirstPageFormKey.currentState!.value[AppFieldName.title];
+
     return PersonDto(
       title.name,
       personFirstPageFormKey.currentState!.value[AppFieldName.lastname],
-      personFirstPageFormKey.currentState!.value[AppFieldName.firstname],
+      personFirstPageFormKey.currentState?.value[AppFieldName.firstname],
       personFirstPageFormKey.currentState!.value[AppFieldName.birthdate].day,
       personFirstPageFormKey.currentState!.value[AppFieldName.birthdate].month,
       personFirstPageFormKey.currentState!.value[AppFieldName.birthdate].year,

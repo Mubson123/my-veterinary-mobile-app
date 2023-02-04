@@ -25,40 +25,38 @@ class SplashPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           restorationId: 'splash_page',
-          body: GetBuilder<AppStateController>(
-            builder: (controller) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppUtilsName.title,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Colors.deepOrangeAccent.withOpacity(0.99),
-                          fontSize: Get.height * 0.06,
-                          fontWeight: FontWeight.w300,
-                        ),
+          body: GetBuilder<AppStateController>(builder: (controller) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppUtilsName.title,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.deepOrangeAccent.withOpacity(0.99),
+                        fontSize: Get.height * 0.06,
+                        fontWeight: FontWeight.w300,
                       ),
-                    ],
-                  ),
-                  AppSpace(height: Get.height * 0.02),
-                  Text(
-                    AppUtilsName.welcome,
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.99),
-                      fontSize: Get.height * 0.05,
-                      fontWeight: FontWeight.w300,
                     ),
+                  ],
+                ),
+                AppSpace(height: Get.height * 0.02),
+                Text(
+                  AppUtilsName.welcome,
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.99),
+                    fontSize: Get.height * 0.05,
+                    fontWeight: FontWeight.w300,
                   ),
-                ],
-              );
-            }
-          ),
+                ),
+              ],
+            );
+          }),
         ),
       ),
     );

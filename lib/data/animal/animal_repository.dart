@@ -3,7 +3,7 @@ import '/entity/dto/animal_dto.dart';
 import '/entity/animal.dart';
 
 abstract class IAnimalRepository {
-  Future<List<Animal>> getAllAnimals();
+  Future<List<Animal>> getAnimalsByOwnerId(String id);
 
   Future<Animal> getAnimalById(String id);
 
@@ -20,8 +20,8 @@ class AnimalRepository implements IAnimalRepository {
   final IAnimalProvider provider;
 
   @override
-  Future<List<Animal>> getAllAnimals() async {
-    final response = await provider.getAllAnimals('');
+  Future<List<Animal>> getAnimalsByOwnerId(String id) async {
+    final response = await provider.getAnimalsByOwnerId('owners/$id');
     if (response.hasError) {
       return Future.error(response.statusText!);
     }

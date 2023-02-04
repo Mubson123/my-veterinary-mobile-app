@@ -6,8 +6,6 @@ abstract class IPersonProvider {
 
   Future<Response<Person>> getPersonById(String url);
 
-  Future<Response<Person>> getPersonByEmail(String url);
-
   Future<Response<Person>> addPerson(String url, Map<String, dynamic> body);
 
   Future<Response<Person>> updatePerson(String url, Map<String, dynamic> body);
@@ -19,7 +17,7 @@ class PersonProvider extends GetConnect
     implements IPersonProvider, GetxService {
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://localhost:8080/api/veterinary/persons';
+    httpClient.baseUrl = 'http://localhost:6868/api/veterinary/persons';
     super.onInit();
   }
 
@@ -36,12 +34,6 @@ class PersonProvider extends GetConnect
 
   @override
   Future<Response<Person>> getPersonById(String url) {
-    return get(url,
-        decoder: (data) => Person.fromJson(data as Map<String, dynamic>));
-  }
-
-  @override
-  Future<Response<Person>> getPersonByEmail(String url) {
     return get(url,
         decoder: (data) => Person.fromJson(data as Map<String, dynamic>));
   }

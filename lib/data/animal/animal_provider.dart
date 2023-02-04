@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import '/entity/animal.dart';
 
 abstract class IAnimalProvider {
-  Future<Response<List<Animal>>> getAllAnimals(String url);
+  Future<Response<List<Animal>>> getAnimalsByOwnerId(String url);
 
   Future<Response<Animal>> getAnimalById(String url);
 
@@ -17,7 +17,7 @@ class AnimalProvider extends GetConnect
     implements IAnimalProvider, GetxService {
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://localhost:8080/api/veterinary/animals';
+    httpClient.baseUrl = 'http://localhost:6868/api/veterinary/animals';
     super.onInit();
   }
 
@@ -28,7 +28,7 @@ class AnimalProvider extends GetConnect
   }
 
   @override
-  Future<Response<List<Animal>>> getAllAnimals(String url) {
+  Future<Response<List<Animal>>> getAnimalsByOwnerId(String url) {
     return get(url, decoder: (data) => Animal.mapFromJson(data));
   }
 
