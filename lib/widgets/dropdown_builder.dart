@@ -1,3 +1,4 @@
+import 'package:built_value/built_value.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class AppDropDownBuilder extends StatelessWidget {
       : super(key: key);
   final String name;
   final GlobalKey<FormBuilderState> formKey;
-  final List<Enum> elements;
+  final List<EnumClass> elements;
 
   @override
   Widget build(BuildContext context) {

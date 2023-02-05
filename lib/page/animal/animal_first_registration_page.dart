@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import '../../entity/animal.dart';
+import 'package:openapi/openapi.dart';
 import '/controller/animal_controller.dart';
 import 'package:flutter/material.dart';
 import '/widgets/widget_export.dart';
@@ -90,7 +90,7 @@ class AnimalFirstRegistrationPage extends GetView<AnimalController> {
                       AppDropDownBuilder(
                         name: AppFieldName.gender,
                         formKey: formKey,
-                        elements: Gender.values,
+                        elements: AnimalDtoGenderEnum.values.toList(),
                       ),
                       AppSpace(height: Get.height * 0.05),
                       Row(

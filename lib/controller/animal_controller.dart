@@ -1,67 +1,101 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../entity/animal.dart';
-import '../entity/dto/animal_dto.dart';
+import 'package:openapi/openapi.dart';
 import 'package:flutter/material.dart';
-import '../data/animal/animal_repository.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../utils/form_builder_name.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class AnimalController extends GetxController {
+  final _api = Openapi().getAnimalControllerApi();
   final animalFirstPageFormKey = GlobalKey<FormBuilderState>();
   final animalSecondPageFormKey = GlobalKey<FormBuilderState>();
-  final _animalRepository = AnimalRepository(provider: Get.find());
 
   @override
-  void onInit() async {
-    await getAnimalsByOwnerId();
+  void onInit() {
+    getAllAnimals();
     super.onInit();
   }
 
-  Future<List<Animal>> getAnimalsByOwnerId() async {
-    final prefs = await SharedPreferences.getInstance();
-    final id = prefs.getString('id');
-    if (id != null) {
-      return await _animalRepository.getAnimalsByOwnerId(id);
+  Future<List<ResponseAnimal>> getAllAnimals() async {
+    final response = await _api.findAllAnimals();
+    if (response.statusCode != 200) {
+      throw Exception();
+    } else if (response.data == null) {
+      return [];
     }
-    return [];
+    return response.data!.toList();
   }
 
-  Future<Animal> getAnimalById(String id) async {
-    return await _animalRepository.getAnimalById(id);
+  Future<List<ResponseAnimal>> getAnimalsByOwnerId(String id) async {
+    final response = await _api.findAnimalsByOwnerId(id: id);
+    if (response.statusCode != 200) {
+      throw Exception();
+    } else if (response.data == null) {
+      return [];
+    }
+    return response.data!.toList();
   }
 
-  Future<Animal> addAnimal() async {
-    return await _animalRepository.saveAnimal(await _setAnimalDto());
+  Future<ResponseAnimal> getAnimalById(String id) async {
+    final response = await _api.findAnimalById(id: id);
+    if (response.statusCode != 200) {
+      throw Exception();
+    }
+    return response.data!;
   }
 
-  Future<Animal> updateAnimal(String id) async {
-    return await _animalRepository.updateAnimalById(id, await _setAnimalDto());
+  Future<ResponseAnimal> addAnimal() async {
+    final response = await _api.addAnimal(animalDto: await _setAnimalDto());
+    if (response.statusCode != 204) {
+      throw Exception();
+    }
+    return response.data!;
+  }
+
+  Future<ResponseAnimal> updateAnimal(String id) async {
+    final response =
+        await _api.updateAnimal(id: id, animalDto: await _setAnimalDto());
+    if (response.statusCode != 201) {
+      throw Exception();
+    }
+    return response.data!;
   }
 
   Future<dynamic> deleteAnimalById(String id) async {
-    return await _animalRepository.deleteAnimalById(id);
+    final response = await _api.deleteAnimal(id: id);
+    if (response.statusCode != 201) {
+      throw Exception();
+    }
+    return response.data!;
   }
 
   Future<AnimalDto> _setAnimalDto() async {
     final prefs = await SharedPreferences.getInstance();
-    return AnimalDto(
-      animalFirstPageFormKey.currentState!.value[AppFieldName.animalName],
-      animalFirstPageFormKey.currentState!.value[AppFieldName.breed],
-      animalFirstPageFormKey.currentState!.value[AppFieldName.type],
-      animalFirstPageFormKey.currentState!.value[AppFieldName.gender],
-      animalSecondPageFormKey.currentState!.value[AppFieldName.color],
-      double.parse(
-          animalSecondPageFormKey.currentState!.value[AppFieldName.length]),
-      double.parse(
-          animalSecondPageFormKey.currentState!.value[AppFieldName.weight]),
-      animalSecondPageFormKey.currentState?.value[AppFieldName.symptoms],
-      animalFirstPageFormKey.currentState?.value[AppFieldName.birthdate].day,
-      animalFirstPageFormKey.currentState?.value[AppFieldName.birthdate].month,
-      animalFirstPageFormKey.currentState?.value[AppFieldName.birthdate].year,
-      [
-        prefs.getString(AppFieldName.email)!
-      ],
-    );
+
+    return AnimalDto((builder) {
+      builder.name =
+          animalFirstPageFormKey.currentState!.value[AppFieldName.animalName];
+      builder.breed =
+          animalFirstPageFormKey.currentState!.value[AppFieldName.breed];
+      builder.type =
+          animalFirstPageFormKey.currentState!.value[AppFieldName.type];
+      builder.gender =
+          animalFirstPageFormKey.currentState!.value[AppFieldName.gender];
+      builder.color =
+          animalSecondPageFormKey.currentState!.value[AppFieldName.color];
+      builder.length = double.parse(
+          animalSecondPageFormKey.currentState!.value[AppFieldName.length]);
+      builder.weight = double.parse(
+          animalSecondPageFormKey.currentState!.value[AppFieldName.weight]);
+      builder.symptoms =
+          animalSecondPageFormKey.currentState?.value[AppFieldName.symptoms];
+      builder.day = animalFirstPageFormKey
+          .currentState?.value[AppFieldName.birthdate].day;
+      builder.month = animalFirstPageFormKey
+          .currentState?.value[AppFieldName.birthdate].month;
+      builder.year = animalFirstPageFormKey
+          .currentState?.value[AppFieldName.birthdate].year;
+      builder.animalOwnerEmails.add("${prefs.getString(AppFieldName.email)}");
+    });
   }
 }

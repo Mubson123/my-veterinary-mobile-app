@@ -3,11 +3,11 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/controller/person_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:openapi/openapi.dart';
 import '/widgets/widget_export.dart';
 import '/utils/util_export.dart';
 import '/navigation/routes.dart';
 import 'package:get/get.dart';
-import '/entity/person.dart';
 
 class PersonFirstRegistrationPage extends GetView<PersonController> {
   const PersonFirstRegistrationPage({Key? key}) : super(key: key);
@@ -49,7 +49,7 @@ class PersonFirstRegistrationPage extends GetView<PersonController> {
                       AppDropDownBuilder(
                         name: AppFieldName.title,
                         formKey: formKey,
-                        elements: UserTitle.values,
+                        elements: PersonUserTitleEnum.values.toList(),
                       ),
                       AppSpace(height: Get.height * 0.01),
                       AppFormBuilderTextField(
