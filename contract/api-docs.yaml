@@ -1,0 +1,881 @@
+openapi: 3.0.1
+info:
+  title: My Veterinary APIs
+  description: Application For Animal Fun
+  license:
+    name: Apache
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.1
+servers:
+- url: http://localhost:6868
+  description: Generated server url
+paths:
+  /api/veterinary/persons/{id}:
+    get:
+      tags:
+      - person-controller
+      operationId: findPersonById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+    put:
+      tags:
+      - person-controller
+      operationId: updatePerson
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDto'
+        required: true
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+    delete:
+      tags:
+      - person-controller
+      operationId: deletePerson
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+  /api/veterinary/media/{id}:
+    put:
+      tags:
+      - app-media-controller
+      operationId: updateMediaById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+    delete:
+      tags:
+      - app-media-controller
+      operationId: deleteMediaById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+  /api/veterinary/animals/{id}:
+    get:
+      tags:
+      - animal-controller
+      operationId: findAnimalById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+    put:
+      tags:
+      - animal-controller
+      operationId: updateAnimal
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalDto'
+        required: true
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+        "500":
+          description: Operation not completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+    delete:
+      tags:
+      - animal-controller
+      operationId: deleteAnimal
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+  /api/veterinary/persons:
+    get:
+      tags:
+      - person-controller
+      operationId: findAllPersons
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponsePerson'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponsePerson'
+    post:
+      tags:
+      - person-controller
+      operationId: addPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDto'
+        required: true
+      responses:
+        "204":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+        "500":
+          description: Operation not completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+    delete:
+      tags:
+      - person-controller
+      operationId: deleteAllPerson
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponsePerson'
+  /api/veterinary/media/person/{id}:
+    get:
+      tags:
+      - app-media-controller
+      operationId: getAllMediaByPersonId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+    post:
+      tags:
+      - app-media-controller
+      operationId: storeMediaByPersonId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - files
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        "204":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+    delete:
+      tags:
+      - app-media-controller
+      operationId: deleteMediaByPersonId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+  /api/veterinary/media/animal/{id}:
+    get:
+      tags:
+      - app-media-controller
+      operationId: getAllMediaByAnimalId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+    post:
+      tags:
+      - app-media-controller
+      operationId: storeMediaByAninalId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - files
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        "204":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+    delete:
+      tags:
+      - app-media-controller
+      operationId: deleteMediaByAnimalId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+  /api/veterinary/animals:
+    get:
+      tags:
+      - animal-controller
+      operationId: findAllAnimals
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAnimal'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAnimal'
+    post:
+      tags:
+      - animal-controller
+      operationId: addAnimal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnimalDto'
+        required: true
+      responses:
+        "204":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+        "500":
+          description: Operation not completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+    delete:
+      tags:
+      - animal-controller
+      operationId: deleteAll_1
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseAnimal'
+  /api/veterinary/media:
+    get:
+      tags:
+      - app-media-controller
+      operationId: getAllMedia
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseMedia'
+    delete:
+      tags:
+      - app-media-controller
+      operationId: deleteAll
+      responses:
+        "201":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+        "500":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseMedia'
+  /api/veterinary/media/files/{id}:
+    get:
+      tags:
+      - app-media-controller
+      operationId: getMediaById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+  /api/veterinary/animals/owners/{id}:
+    get:
+      tags:
+      - animal-controller
+      operationId: findAnimalsByOwnerId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Operation completed
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAnimal'
+        "404":
+          description: Operation not completed
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAnimal'
+components:
+  schemas:
+    PersonDto:
+      required:
+      - birthDay
+      - birthMonth
+      - birthYear
+      - city
+      - country
+      - email
+      - lastname
+      - phoneNumber
+      - postalCode
+      - streetAndHouseNumber
+      - userTitle
+      type: object
+      properties:
+        userTitle:
+          type: string
+        lastname:
+          type: string
+        firstname:
+          type: string
+        birthDay:
+          type: integer
+          format: int32
+        birthMonth:
+          type: integer
+          format: int32
+        birthYear:
+          type: integer
+          format: int32
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        streetAndHouseNumber:
+          type: string
+        postalCode:
+          type: integer
+          format: int32
+        city:
+          type: string
+        country:
+          type: string
+    Address:
+      type: object
+      properties:
+        streetAndHouseNumber:
+          type: string
+        postalCode:
+          type: integer
+          format: int32
+        city:
+          type: string
+        country:
+          type: string
+    Animal:
+      required:
+      - lastRegistration
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        breed:
+          type: string
+        type:
+          type: string
+        gender:
+          type: string
+          enum:
+          - Male
+          - Female
+          - Unknown
+        color:
+          type: string
+        length:
+          type: number
+          format: double
+        weight:
+          type: number
+          format: double
+        symptoms:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        animalOwners:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        lastRegistration:
+          type: string
+          format: date-time
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+        userTitle:
+          type: string
+          enum:
+          - Mr
+          - Ms
+          - Unknown
+        lastname:
+          type: string
+        firstname:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+    ResponseMedia:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        size:
+          type: integer
+          format: int32
+    ResponsePerson:
+      type: object
+      properties:
+        id:
+          type: string
+        userTitle:
+          type: string
+          enum:
+          - Mr
+          - Ms
+          - Unknown
+        lastname:
+          type: string
+        firstname:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        phoneNumber:
+          type: string
+        email:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        animalSet:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+        responseMedia:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseMedia'
+    AnimalDto:
+      required:
+      - animalOwnerEmails
+      - color
+      - day
+      - gender
+      - month
+      - name
+      - type
+      - year
+      type: object
+      properties:
+        name:
+          type: string
+        breed:
+          type: string
+        type:
+          type: string
+        gender:
+          type: string
+          enum:
+          - Male
+          - Female
+          - Unknown
+        color:
+          type: string
+        length:
+          type: number
+          format: double
+        weight:
+          type: number
+          format: double
+        symptoms:
+          type: string
+        day:
+          type: integer
+          format: int32
+        month:
+          type: integer
+          format: int32
+        year:
+          type: integer
+          format: int32
+        animalOwnerEmails:
+          type: array
+          items:
+            type: string
+    ResponseAnimal:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        breed:
+          type: string
+        type:
+          type: string
+        gender:
+          type: string
+          enum:
+          - Male
+          - Female
+          - Unknown
+        color:
+          type: string
+        length:
+          type: number
+          format: double
+        weight:
+          type: number
+          format: double
+        symptoms:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        animalOwners:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        responseMedia:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseMedia'

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:myveterinary/style/my_veterinary_app_themes.dart';
+import '/style/my_veterinary_app_themes.dart';
 import '/page/other/unknown_route_page.dart';
 import 'navigation/routes.dart';
 import '/navigation/app_pages.dart';
