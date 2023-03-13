@@ -10,4 +10,6 @@ class Routes {
   static const String animalSecondRegistrationPage =
       '/animal-second-registration-page';
   static const String homePage = '/home-page';
+  static const String welcomePage = '/welcome-page';
+  static const String login = '/login-page';
 }

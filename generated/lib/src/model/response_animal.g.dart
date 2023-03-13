@@ -71,25 +71,25 @@ class _$ResponseAnimal extends ResponseAnimal {
   @override
   final String? id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? breed;
+  final String breed;
   @override
-  final String? type;
+  final String type;
   @override
-  final ResponseAnimalGenderEnum? gender;
+  final ResponseAnimalGenderEnum gender;
   @override
-  final String? color;
+  final String color;
   @override
-  final double? length;
+  final double length;
   @override
-  final double? weight;
+  final double weight;
   @override
-  final String? symptoms;
+  final String symptoms;
   @override
-  final Date? birthdate;
+  final Date birthdate;
   @override
-  final BuiltSet<Person>? animalOwners;
+  final BuiltSet<Person> animalOwners;
   @override
   final BuiltSet<ResponseMedia>? responseMedia;
 
@@ -98,18 +98,32 @@ class _$ResponseAnimal extends ResponseAnimal {
 
   _$ResponseAnimal._(
       {this.id,
-      this.name,
-      this.breed,
-      this.type,
-      this.gender,
-      this.color,
-      this.length,
-      this.weight,
-      this.symptoms,
-      this.birthdate,
-      this.animalOwners,
+      required this.name,
+      required this.breed,
+      required this.type,
+      required this.gender,
+      required this.color,
+      required this.length,
+      required this.weight,
+      required this.symptoms,
+      required this.birthdate,
+      required this.animalOwners,
       this.responseMedia})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'ResponseAnimal', 'name');
+    BuiltValueNullFieldError.checkNotNull(breed, r'ResponseAnimal', 'breed');
+    BuiltValueNullFieldError.checkNotNull(type, r'ResponseAnimal', 'type');
+    BuiltValueNullFieldError.checkNotNull(gender, r'ResponseAnimal', 'gender');
+    BuiltValueNullFieldError.checkNotNull(color, r'ResponseAnimal', 'color');
+    BuiltValueNullFieldError.checkNotNull(length, r'ResponseAnimal', 'length');
+    BuiltValueNullFieldError.checkNotNull(weight, r'ResponseAnimal', 'weight');
+    BuiltValueNullFieldError.checkNotNull(
+        symptoms, r'ResponseAnimal', 'symptoms');
+    BuiltValueNullFieldError.checkNotNull(
+        birthdate, r'ResponseAnimal', 'birthdate');
+    BuiltValueNullFieldError.checkNotNull(
+        animalOwners, r'ResponseAnimal', 'animalOwners');
+  }
 
   @override
   ResponseAnimal rebuild(void Function(ResponseAnimalBuilder) updates) =>
@@ -248,7 +262,7 @@ class ResponseAnimalBuilder
       _weight = $v.weight;
       _symptoms = $v.symptoms;
       _birthdate = $v.birthdate;
-      _animalOwners = $v.animalOwners?.toBuilder();
+      _animalOwners = $v.animalOwners.toBuilder();
       _responseMedia = $v.responseMedia?.toBuilder();
       _$v = null;
     }
@@ -275,22 +289,31 @@ class ResponseAnimalBuilder
       _$result = _$v ??
           new _$ResponseAnimal._(
               id: id,
-              name: name,
-              breed: breed,
-              type: type,
-              gender: gender,
-              color: color,
-              length: length,
-              weight: weight,
-              symptoms: symptoms,
-              birthdate: birthdate,
-              animalOwners: _animalOwners?.build(),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'ResponseAnimal', 'name'),
+              breed: BuiltValueNullFieldError.checkNotNull(
+                  breed, r'ResponseAnimal', 'breed'),
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, r'ResponseAnimal', 'type'),
+              gender: BuiltValueNullFieldError.checkNotNull(
+                  gender, r'ResponseAnimal', 'gender'),
+              color: BuiltValueNullFieldError.checkNotNull(
+                  color, r'ResponseAnimal', 'color'),
+              length: BuiltValueNullFieldError.checkNotNull(
+                  length, r'ResponseAnimal', 'length'),
+              weight: BuiltValueNullFieldError.checkNotNull(
+                  weight, r'ResponseAnimal', 'weight'),
+              symptoms: BuiltValueNullFieldError.checkNotNull(
+                  symptoms, r'ResponseAnimal', 'symptoms'),
+              birthdate: BuiltValueNullFieldError.checkNotNull(
+                  birthdate, r'ResponseAnimal', 'birthdate'),
+              animalOwners: animalOwners.build(),
               responseMedia: _responseMedia?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'animalOwners';
-        _animalOwners?.build();
+        animalOwners.build();
         _$failedField = 'responseMedia';
         _responseMedia?.build();
       } catch (e) {

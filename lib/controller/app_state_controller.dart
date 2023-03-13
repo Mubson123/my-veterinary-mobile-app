@@ -1,13 +1,12 @@
 import 'package:get/get.dart';
-import '/navigation/routes.dart';
+import '/controller/app_media_controller.dart';
+import '/controller/person_controller.dart';
+import 'animal_controller.dart';
+import 'login_controller.dart';
 
 class AppStateController extends GetxController {
-
-  @override
-  void onReady() {
-    Future.delayed( const Duration(milliseconds: 3000),() {
-      Get.offAllNamed(Routes.personFirstRegistrationPage);
-    });
-    super.onReady();
-  }
+  final loginController = LoginController();
+  final personController = PersonController();
+  final animalController = AnimalController();
+  final appMediaController = AppMediaController();
 }

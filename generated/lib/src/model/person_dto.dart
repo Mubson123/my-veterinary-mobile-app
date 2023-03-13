@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -26,13 +27,14 @@ part 'person_dto.g.dart';
 @BuiltValue()
 abstract class PersonDto implements Built<PersonDto, PersonDtoBuilder> {
   @BuiltValueField(wireName: r'userTitle')
-  String get userTitle;
+  PersonDtoUserTitleEnum get userTitle;
+  // enum userTitleEnum {  Mr,  Ms,  Unknown,  };
 
   @BuiltValueField(wireName: r'lastname')
   String get lastname;
 
   @BuiltValueField(wireName: r'firstname')
-  String? get firstname;
+  String get firstname;
 
   @BuiltValueField(wireName: r'birthDay')
   int get birthDay;
@@ -87,20 +89,18 @@ class _$PersonDtoSerializer implements PrimitiveSerializer<PersonDto> {
     yield r'userTitle';
     yield serializers.serialize(
       object.userTitle,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(PersonDtoUserTitleEnum),
     );
     yield r'lastname';
     yield serializers.serialize(
       object.lastname,
       specifiedType: const FullType(String),
     );
-    if (object.firstname != null) {
-      yield r'firstname';
-      yield serializers.serialize(
-        object.firstname,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'firstname';
+    yield serializers.serialize(
+      object.firstname,
+      specifiedType: const FullType(String),
+    );
     yield r'birthDay';
     yield serializers.serialize(
       object.birthDay,
@@ -172,8 +172,8 @@ class _$PersonDtoSerializer implements PrimitiveSerializer<PersonDto> {
         case r'userTitle':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(PersonDtoUserTitleEnum),
+          ) as PersonDtoUserTitleEnum;
           result.userTitle = valueDes;
           break;
         case r'lastname':
@@ -280,5 +280,22 @@ class _$PersonDtoSerializer implements PrimitiveSerializer<PersonDto> {
     );
     return result.build();
   }
+}
+
+class PersonDtoUserTitleEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireName: r'Mr')
+  static const PersonDtoUserTitleEnum mr = _$personDtoUserTitleEnum_mr;
+  @BuiltValueEnumConst(wireName: r'Ms')
+  static const PersonDtoUserTitleEnum ms = _$personDtoUserTitleEnum_ms;
+  @BuiltValueEnumConst(wireName: r'Unknown')
+  static const PersonDtoUserTitleEnum unknown = _$personDtoUserTitleEnum_unknown;
+
+  static Serializer<PersonDtoUserTitleEnum> get serializer => _$personDtoUserTitleEnumSerializer;
+
+  const PersonDtoUserTitleEnum._(String name): super(name);
+
+  static BuiltSet<PersonDtoUserTitleEnum> get values => _$personDtoUserTitleEnumValues;
+  static PersonDtoUserTitleEnum valueOf(String name) => _$personDtoUserTitleEnumValueOf(name);
 }
 

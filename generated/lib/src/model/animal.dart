@@ -32,35 +32,35 @@ abstract class Animal implements Built<Animal, AnimalBuilder> {
   String? get id;
 
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'breed')
-  String? get breed;
+  String get breed;
 
   @BuiltValueField(wireName: r'type')
-  String? get type;
+  String get type;
 
   @BuiltValueField(wireName: r'gender')
-  AnimalGenderEnum? get gender;
+  AnimalGenderEnum get gender;
   // enum genderEnum {  Male,  Female,  Unknown,  };
 
   @BuiltValueField(wireName: r'color')
-  String? get color;
+  String get color;
 
   @BuiltValueField(wireName: r'length')
-  double? get length;
+  double get length;
 
   @BuiltValueField(wireName: r'weight')
-  double? get weight;
+  double get weight;
 
   @BuiltValueField(wireName: r'symptoms')
-  String? get symptoms;
+  String get symptoms;
 
   @BuiltValueField(wireName: r'birthdate')
-  Date? get birthdate;
+  Date get birthdate;
 
   @BuiltValueField(wireName: r'animalOwners')
-  BuiltSet<Person>? get animalOwners;
+  BuiltSet<Person> get animalOwners;
 
   @BuiltValueField(wireName: r'lastRegistration')
   DateTime get lastRegistration;
@@ -95,76 +95,56 @@ class _$AnimalSerializer implements PrimitiveSerializer<Animal> {
         specifiedType: const FullType(String),
       );
     }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.breed != null) {
-      yield r'breed';
-      yield serializers.serialize(
-        object.breed,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.type != null) {
-      yield r'type';
-      yield serializers.serialize(
-        object.type,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.gender != null) {
-      yield r'gender';
-      yield serializers.serialize(
-        object.gender,
-        specifiedType: const FullType(AnimalGenderEnum),
-      );
-    }
-    if (object.color != null) {
-      yield r'color';
-      yield serializers.serialize(
-        object.color,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.length != null) {
-      yield r'length';
-      yield serializers.serialize(
-        object.length,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.weight != null) {
-      yield r'weight';
-      yield serializers.serialize(
-        object.weight,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.symptoms != null) {
-      yield r'symptoms';
-      yield serializers.serialize(
-        object.symptoms,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.birthdate != null) {
-      yield r'birthdate';
-      yield serializers.serialize(
-        object.birthdate,
-        specifiedType: const FullType(Date),
-      );
-    }
-    if (object.animalOwners != null) {
-      yield r'animalOwners';
-      yield serializers.serialize(
-        object.animalOwners,
-        specifiedType: const FullType(BuiltSet, [FullType(Person)]),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'breed';
+    yield serializers.serialize(
+      object.breed,
+      specifiedType: const FullType(String),
+    );
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(String),
+    );
+    yield r'gender';
+    yield serializers.serialize(
+      object.gender,
+      specifiedType: const FullType(AnimalGenderEnum),
+    );
+    yield r'color';
+    yield serializers.serialize(
+      object.color,
+      specifiedType: const FullType(String),
+    );
+    yield r'length';
+    yield serializers.serialize(
+      object.length,
+      specifiedType: const FullType(double),
+    );
+    yield r'weight';
+    yield serializers.serialize(
+      object.weight,
+      specifiedType: const FullType(double),
+    );
+    yield r'symptoms';
+    yield serializers.serialize(
+      object.symptoms,
+      specifiedType: const FullType(String),
+    );
+    yield r'birthdate';
+    yield serializers.serialize(
+      object.birthdate,
+      specifiedType: const FullType(Date),
+    );
+    yield r'animalOwners';
+    yield serializers.serialize(
+      object.animalOwners,
+      specifiedType: const FullType(BuiltSet, [FullType(Person)]),
+    );
     yield r'lastRegistration';
     yield serializers.serialize(
       object.lastRegistration,

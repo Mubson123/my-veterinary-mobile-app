@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **userTitle** | **String** |  | 
 **lastname** | **String** |  | 
-**firstname** | **String** |  | [optional] 
+**firstname** | **String** |  | 
 **birthDay** | **int** |  | 
 **birthMonth** | **int** |  | 
 **birthYear** | **int** |  | 

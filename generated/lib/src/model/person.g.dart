@@ -70,33 +70,42 @@ class _$Person extends Person {
   @override
   final String? id;
   @override
-  final PersonUserTitleEnum? userTitle;
+  final PersonUserTitleEnum userTitle;
   @override
-  final String? lastname;
+  final String lastname;
   @override
-  final String? firstname;
+  final String firstname;
   @override
-  final Date? birthdate;
+  final Date birthdate;
   @override
-  final String? phoneNumber;
+  final String phoneNumber;
   @override
-  final String? email;
+  final String email;
   @override
-  final Address? address;
+  final Address address;
 
   factory _$Person([void Function(PersonBuilder)? updates]) =>
       (new PersonBuilder()..update(updates))._build();
 
   _$Person._(
       {this.id,
-      this.userTitle,
-      this.lastname,
-      this.firstname,
-      this.birthdate,
-      this.phoneNumber,
-      this.email,
-      this.address})
-      : super._();
+      required this.userTitle,
+      required this.lastname,
+      required this.firstname,
+      required this.birthdate,
+      required this.phoneNumber,
+      required this.email,
+      required this.address})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(userTitle, r'Person', 'userTitle');
+    BuiltValueNullFieldError.checkNotNull(lastname, r'Person', 'lastname');
+    BuiltValueNullFieldError.checkNotNull(firstname, r'Person', 'firstname');
+    BuiltValueNullFieldError.checkNotNull(birthdate, r'Person', 'birthdate');
+    BuiltValueNullFieldError.checkNotNull(
+        phoneNumber, r'Person', 'phoneNumber');
+    BuiltValueNullFieldError.checkNotNull(email, r'Person', 'email');
+    BuiltValueNullFieldError.checkNotNull(address, r'Person', 'address');
+  }
 
   @override
   Person rebuild(void Function(PersonBuilder) updates) =>
@@ -199,7 +208,7 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
       _birthdate = $v.birthdate;
       _phoneNumber = $v.phoneNumber;
       _email = $v.email;
-      _address = $v.address?.toBuilder();
+      _address = $v.address.toBuilder();
       _$v = null;
     }
     return this;
@@ -225,18 +234,24 @@ class PersonBuilder implements Builder<Person, PersonBuilder> {
       _$result = _$v ??
           new _$Person._(
               id: id,
-              userTitle: userTitle,
-              lastname: lastname,
-              firstname: firstname,
-              birthdate: birthdate,
-              phoneNumber: phoneNumber,
-              email: email,
-              address: _address?.build());
+              userTitle: BuiltValueNullFieldError.checkNotNull(
+                  userTitle, r'Person', 'userTitle'),
+              lastname: BuiltValueNullFieldError.checkNotNull(
+                  lastname, r'Person', 'lastname'),
+              firstname: BuiltValueNullFieldError.checkNotNull(
+                  firstname, r'Person', 'firstname'),
+              birthdate: BuiltValueNullFieldError.checkNotNull(
+                  birthdate, r'Person', 'birthdate'),
+              phoneNumber: BuiltValueNullFieldError.checkNotNull(
+                  phoneNumber, r'Person', 'phoneNumber'),
+              email: BuiltValueNullFieldError.checkNotNull(
+                  email, r'Person', 'email'),
+              address: address.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'address';
-        _address?.build();
+        address.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'Person', _$failedField, e.toString());

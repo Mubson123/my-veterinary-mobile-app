@@ -30,7 +30,7 @@ abstract class AnimalDto implements Built<AnimalDto, AnimalDtoBuilder> {
   String get name;
 
   @BuiltValueField(wireName: r'breed')
-  String? get breed;
+  String get breed;
 
   @BuiltValueField(wireName: r'type')
   String get type;
@@ -43,13 +43,13 @@ abstract class AnimalDto implements Built<AnimalDto, AnimalDtoBuilder> {
   String get color;
 
   @BuiltValueField(wireName: r'length')
-  double? get length;
+  double get length;
 
   @BuiltValueField(wireName: r'weight')
-  double? get weight;
+  double get weight;
 
   @BuiltValueField(wireName: r'symptoms')
-  String? get symptoms;
+  String get symptoms;
 
   @BuiltValueField(wireName: r'day')
   int get day;
@@ -91,13 +91,11 @@ class _$AnimalDtoSerializer implements PrimitiveSerializer<AnimalDto> {
       object.name,
       specifiedType: const FullType(String),
     );
-    if (object.breed != null) {
-      yield r'breed';
-      yield serializers.serialize(
-        object.breed,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'breed';
+    yield serializers.serialize(
+      object.breed,
+      specifiedType: const FullType(String),
+    );
     yield r'type';
     yield serializers.serialize(
       object.type,
@@ -113,27 +111,21 @@ class _$AnimalDtoSerializer implements PrimitiveSerializer<AnimalDto> {
       object.color,
       specifiedType: const FullType(String),
     );
-    if (object.length != null) {
-      yield r'length';
-      yield serializers.serialize(
-        object.length,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.weight != null) {
-      yield r'weight';
-      yield serializers.serialize(
-        object.weight,
-        specifiedType: const FullType(double),
-      );
-    }
-    if (object.symptoms != null) {
-      yield r'symptoms';
-      yield serializers.serialize(
-        object.symptoms,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'length';
+    yield serializers.serialize(
+      object.length,
+      specifiedType: const FullType(double),
+    );
+    yield r'weight';
+    yield serializers.serialize(
+      object.weight,
+      specifiedType: const FullType(double),
+    );
+    yield r'symptoms';
+    yield serializers.serialize(
+      object.symptoms,
+      specifiedType: const FullType(String),
+    );
     yield r'day';
     yield serializers.serialize(
       object.day,

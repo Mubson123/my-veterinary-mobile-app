@@ -8,20 +8,29 @@ part of 'address.dart';
 
 class _$Address extends Address {
   @override
-  final String? streetAndHouseNumber;
+  final String streetAndHouseNumber;
   @override
-  final int? postalCode;
+  final int postalCode;
   @override
-  final String? city;
+  final String city;
   @override
-  final String? country;
+  final String country;
 
   factory _$Address([void Function(AddressBuilder)? updates]) =>
       (new AddressBuilder()..update(updates))._build();
 
   _$Address._(
-      {this.streetAndHouseNumber, this.postalCode, this.city, this.country})
-      : super._();
+      {required this.streetAndHouseNumber,
+      required this.postalCode,
+      required this.city,
+      required this.country})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        streetAndHouseNumber, r'Address', 'streetAndHouseNumber');
+    BuiltValueNullFieldError.checkNotNull(postalCode, r'Address', 'postalCode');
+    BuiltValueNullFieldError.checkNotNull(city, r'Address', 'city');
+    BuiltValueNullFieldError.checkNotNull(country, r'Address', 'country');
+  }
 
   @override
   Address rebuild(void Function(AddressBuilder) updates) =>
@@ -115,10 +124,14 @@ class AddressBuilder implements Builder<Address, AddressBuilder> {
   _$Address _build() {
     final _$result = _$v ??
         new _$Address._(
-            streetAndHouseNumber: streetAndHouseNumber,
-            postalCode: postalCode,
-            city: city,
-            country: country);
+            streetAndHouseNumber: BuiltValueNullFieldError.checkNotNull(
+                streetAndHouseNumber, r'Address', 'streetAndHouseNumber'),
+            postalCode: BuiltValueNullFieldError.checkNotNull(
+                postalCode, r'Address', 'postalCode'),
+            city:
+                BuiltValueNullFieldError.checkNotNull(city, r'Address', 'city'),
+            country: BuiltValueNullFieldError.checkNotNull(
+                country, r'Address', 'country'));
     replace(_$result);
     return _$result;
   }

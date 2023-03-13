@@ -74,7 +74,7 @@ paths:
         schema:
           type: string
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -132,7 +132,7 @@ paths:
         schema:
           type: string
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -208,7 +208,7 @@ paths:
         schema:
           type: string
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             application/json:
@@ -253,7 +253,7 @@ paths:
               $ref: '#/components/schemas/PersonDto'
         required: true
       responses:
-        "204":
+        "201":
           description: Operation completed
           content:
             application/json:
@@ -270,7 +270,7 @@ paths:
       - person-controller
       operationId: deleteAllPerson
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -334,7 +334,7 @@ paths:
                     type: string
                     format: binary
       responses:
-        "204":
+        "201":
           description: Operation completed
           content:
             application/json:
@@ -361,7 +361,7 @@ paths:
         schema:
           type: string
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -425,7 +425,7 @@ paths:
                     type: string
                     format: binary
       responses:
-        "204":
+        "201":
           description: Operation completed
           content:
             application/json:
@@ -452,7 +452,7 @@ paths:
         schema:
           type: string
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -497,7 +497,7 @@ paths:
               $ref: '#/components/schemas/AnimalDto'
         required: true
       responses:
-        "204":
+        "201":
           description: Operation completed
           content:
             application/json:
@@ -514,7 +514,7 @@ paths:
       - animal-controller
       operationId: deleteAll_1
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             application/json:
@@ -553,7 +553,7 @@ paths:
       - app-media-controller
       operationId: deleteAll
       responses:
-        "201":
+        "204":
           description: Operation completed
           content:
             '*/*':
@@ -633,6 +633,7 @@ components:
       - city
       - country
       - email
+      - firstname
       - lastname
       - phoneNumber
       - postalCode
@@ -642,6 +643,10 @@ components:
       properties:
         userTitle:
           type: string
+          enum:
+          - Mr
+          - Ms
+          - Unknown
         lastname:
           type: string
         firstname:
@@ -669,20 +674,43 @@ components:
         country:
           type: string
     Address:
+      required:
+      - city
+      - country
+      - postalCode
+      - streetAndHouseNumber
       type: object
       properties:
         streetAndHouseNumber:
+          maxLength: 50
+          minLength: 0
           type: string
         postalCode:
+          maximum: 10
+          minimum: 0
           type: integer
           format: int32
         city:
+          maxLength: 50
+          minLength: 0
           type: string
         country:
+          maxLength: 50
+          minLength: 0
           type: string
     Animal:
       required:
+      - animalOwners
+      - birthdate
+      - breed
+      - color
+      - gender
       - lastRegistration
+      - length
+      - name
+      - symptoms
+      - type
+      - weight
       type: object
       properties:
         id:
@@ -721,6 +749,14 @@ components:
           type: string
           format: date-time
     Person:
+      required:
+      - address
+      - birthdate
+      - email
+      - firstname
+      - lastname
+      - phoneNumber
+      - userTitle
       type: object
       properties:
         id:
@@ -795,12 +831,16 @@ components:
     AnimalDto:
       required:
       - animalOwnerEmails
+      - breed
       - color
       - day
       - gender
+      - length
       - month
       - name
+      - symptoms
       - type
+      - weight
       - year
       type: object
       properties:
@@ -840,6 +880,17 @@ components:
           items:
             type: string
     ResponseAnimal:
+      required:
+      - animalOwners
+      - birthdate
+      - breed
+      - color
+      - gender
+      - length
+      - name
+      - symptoms
+      - type
+      - weight
       type: object
       properties:
         id:

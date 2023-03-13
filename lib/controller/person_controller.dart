@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:openapi/openapi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '/utils/form_builder_name.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -13,8 +14,8 @@ class PersonController extends GetxController {
   String country = 'Germany';
 
   @override
-  void onInit() {
-    getAllPersons();
+  void onInit() async {
+    await getPersonById();
     super.onInit();
   }
 
@@ -28,24 +29,31 @@ class PersonController extends GetxController {
     return response.data!.toList();
   }
 
-  Future<ResponsePerson> getPersonById(String id) async {
-    final response = await _api.findPersonById(id: id);
-    if (response.statusCode != 200) {
-      throw Exception();
+  Future<ResponsePerson?> getPersonById() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userKey = prefs.getString(AppUtilsName.userId);
+    if (userKey != null) {
+      final response = await _api.findPersonById(id: userKey);
+      if (response.statusCode != 200) {
+        throw Exception();
+      }
+      return response.data!;
     }
-    return response.data!;
+    return null;
   }
 
   Future<ResponsePerson> addPerson() async {
-    final response = await _api.addPerson(personDto: await _setPersonDto());
-    if (response.statusCode != 204) {
+    final response = await _api.addPerson(personDto: _setPersonDto());
+    print(response.statusCode);
+    if (response.statusCode != 201) {
       throw Exception();
     }
     return response.data!;
   }
 
   Future<ResponsePerson> updatePerson(String id) async {
-    final response = await _api.updatePerson(id: id, personDto: await _setPersonDto());
+    final response =
+        await _api.updatePerson(id: id, personDto: _setPersonDto());
     if (response.statusCode != 201) {
       throw Exception();
     }
@@ -60,14 +68,13 @@ class PersonController extends GetxController {
     return response.data!;
   }
 
-  Future<PersonDto> _setPersonDto() async {
+  PersonDto _setPersonDto() {
     return PersonDto((builder) {
-      builder.userTitle =
-          personFirstPageFormKey.currentState!.value[AppFieldName.title].name;
+      builder.userTitle = personFirstPageFormKey.currentState!.value[AppFieldName.title];
       builder.lastname =
           personFirstPageFormKey.currentState!.value[AppFieldName.lastname];
       builder.firstname =
-          personFirstPageFormKey.currentState?.value[AppFieldName.firstname];
+          personFirstPageFormKey.currentState!.value[AppFieldName.firstname];
       builder.birthDay = personFirstPageFormKey
           .currentState!.value[AppFieldName.birthdate].day;
       builder.birthMonth = personFirstPageFormKey
@@ -83,7 +90,7 @@ class PersonController extends GetxController {
           personSecondPageFormKey.currentState!.value[AppFieldName.postalCode]);
       builder.city =
           personSecondPageFormKey.currentState!.value[AppFieldName.city];
-      builder.userTitle = country;
+      builder.country = country;
     });
   }
 }

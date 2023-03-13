@@ -28,26 +28,26 @@ abstract class Person implements Built<Person, PersonBuilder> {
   String? get id;
 
   @BuiltValueField(wireName: r'userTitle')
-  PersonUserTitleEnum? get userTitle;
+  PersonUserTitleEnum get userTitle;
   // enum userTitleEnum {  Mr,  Ms,  Unknown,  };
 
   @BuiltValueField(wireName: r'lastname')
-  String? get lastname;
+  String get lastname;
 
   @BuiltValueField(wireName: r'firstname')
-  String? get firstname;
+  String get firstname;
 
   @BuiltValueField(wireName: r'birthdate')
-  Date? get birthdate;
+  Date get birthdate;
 
   @BuiltValueField(wireName: r'phoneNumber')
-  String? get phoneNumber;
+  String get phoneNumber;
 
   @BuiltValueField(wireName: r'email')
-  String? get email;
+  String get email;
 
   @BuiltValueField(wireName: r'address')
-  Address? get address;
+  Address get address;
 
   Person._();
 
@@ -79,55 +79,41 @@ class _$PersonSerializer implements PrimitiveSerializer<Person> {
         specifiedType: const FullType(String),
       );
     }
-    if (object.userTitle != null) {
-      yield r'userTitle';
-      yield serializers.serialize(
-        object.userTitle,
-        specifiedType: const FullType(PersonUserTitleEnum),
-      );
-    }
-    if (object.lastname != null) {
-      yield r'lastname';
-      yield serializers.serialize(
-        object.lastname,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.firstname != null) {
-      yield r'firstname';
-      yield serializers.serialize(
-        object.firstname,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.birthdate != null) {
-      yield r'birthdate';
-      yield serializers.serialize(
-        object.birthdate,
-        specifiedType: const FullType(Date),
-      );
-    }
-    if (object.phoneNumber != null) {
-      yield r'phoneNumber';
-      yield serializers.serialize(
-        object.phoneNumber,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.address != null) {
-      yield r'address';
-      yield serializers.serialize(
-        object.address,
-        specifiedType: const FullType(Address),
-      );
-    }
+    yield r'userTitle';
+    yield serializers.serialize(
+      object.userTitle,
+      specifiedType: const FullType(PersonUserTitleEnum),
+    );
+    yield r'lastname';
+    yield serializers.serialize(
+      object.lastname,
+      specifiedType: const FullType(String),
+    );
+    yield r'firstname';
+    yield serializers.serialize(
+      object.firstname,
+      specifiedType: const FullType(String),
+    );
+    yield r'birthdate';
+    yield serializers.serialize(
+      object.birthdate,
+      specifiedType: const FullType(Date),
+    );
+    yield r'phoneNumber';
+    yield serializers.serialize(
+      object.phoneNumber,
+      specifiedType: const FullType(String),
+    );
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'address';
+    yield serializers.serialize(
+      object.address,
+      specifiedType: const FullType(Address),
+    );
   }
 
   @override

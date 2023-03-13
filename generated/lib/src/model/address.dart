@@ -18,16 +18,16 @@ part 'address.g.dart';
 @BuiltValue()
 abstract class Address implements Built<Address, AddressBuilder> {
   @BuiltValueField(wireName: r'streetAndHouseNumber')
-  String? get streetAndHouseNumber;
+  String get streetAndHouseNumber;
 
   @BuiltValueField(wireName: r'postalCode')
-  int? get postalCode;
+  int get postalCode;
 
   @BuiltValueField(wireName: r'city')
-  String? get city;
+  String get city;
 
   @BuiltValueField(wireName: r'country')
-  String? get country;
+  String get country;
 
   Address._();
 
@@ -52,34 +52,26 @@ class _$AddressSerializer implements PrimitiveSerializer<Address> {
     Address object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.streetAndHouseNumber != null) {
-      yield r'streetAndHouseNumber';
-      yield serializers.serialize(
-        object.streetAndHouseNumber,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.postalCode != null) {
-      yield r'postalCode';
-      yield serializers.serialize(
-        object.postalCode,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.city != null) {
-      yield r'city';
-      yield serializers.serialize(
-        object.city,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.country != null) {
-      yield r'country';
-      yield serializers.serialize(
-        object.country,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'streetAndHouseNumber';
+    yield serializers.serialize(
+      object.streetAndHouseNumber,
+      specifiedType: const FullType(String),
+    );
+    yield r'postalCode';
+    yield serializers.serialize(
+      object.postalCode,
+      specifiedType: const FullType(int),
+    );
+    yield r'city';
+    yield serializers.serialize(
+      object.city,
+      specifiedType: const FullType(String),
+    );
+    yield r'country';
+    yield serializers.serialize(
+      object.country,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

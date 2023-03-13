@@ -11,8 +11,8 @@ class AnimalController extends GetxController {
   final animalSecondPageFormKey = GlobalKey<FormBuilderState>();
 
   @override
-  void onInit() {
-    getAllAnimals();
+  void onInit() async {
+    await getAnimalsByOwnerId();
     super.onInit();
   }
 
@@ -26,14 +26,19 @@ class AnimalController extends GetxController {
     return response.data!.toList();
   }
 
-  Future<List<ResponseAnimal>> getAnimalsByOwnerId(String id) async {
-    final response = await _api.findAnimalsByOwnerId(id: id);
-    if (response.statusCode != 200) {
-      throw Exception();
-    } else if (response.data == null) {
+  Future<List<ResponseAnimal>> getAnimalsByOwnerId() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userKey = prefs.getString(AppUtilsName.userId);
+    if (userKey != null) {
+      final response = await _api.findAnimalsByOwnerId(id: userKey);
+      if (response.statusCode != 200) {
+        throw Exception();
+      } else if (response.data != null) {
+        return response.data!.toList();
+      }
       return [];
     }
-    return response.data!.toList();
+    return [];
   }
 
   Future<ResponseAnimal> getAnimalById(String id) async {
@@ -46,7 +51,7 @@ class AnimalController extends GetxController {
 
   Future<ResponseAnimal> addAnimal() async {
     final response = await _api.addAnimal(animalDto: await _setAnimalDto());
-    if (response.statusCode != 204) {
+    if (response.statusCode != 201) {
       throw Exception();
     }
     return response.data!;
@@ -71,7 +76,6 @@ class AnimalController extends GetxController {
 
   Future<AnimalDto> _setAnimalDto() async {
     final prefs = await SharedPreferences.getInstance();
-
     return AnimalDto((builder) {
       builder.name =
           animalFirstPageFormKey.currentState!.value[AppFieldName.animalName];

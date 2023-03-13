@@ -70,7 +70,7 @@ class _$AnimalDto extends AnimalDto {
   @override
   final String name;
   @override
-  final String? breed;
+  final String breed;
   @override
   final String type;
   @override
@@ -78,11 +78,11 @@ class _$AnimalDto extends AnimalDto {
   @override
   final String color;
   @override
-  final double? length;
+  final double length;
   @override
-  final double? weight;
+  final double weight;
   @override
-  final String? symptoms;
+  final String symptoms;
   @override
   final int day;
   @override
@@ -97,22 +97,26 @@ class _$AnimalDto extends AnimalDto {
 
   _$AnimalDto._(
       {required this.name,
-      this.breed,
+      required this.breed,
       required this.type,
       required this.gender,
       required this.color,
-      this.length,
-      this.weight,
-      this.symptoms,
+      required this.length,
+      required this.weight,
+      required this.symptoms,
       required this.day,
       required this.month,
       required this.year,
       required this.animalOwnerEmails})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, r'AnimalDto', 'name');
+    BuiltValueNullFieldError.checkNotNull(breed, r'AnimalDto', 'breed');
     BuiltValueNullFieldError.checkNotNull(type, r'AnimalDto', 'type');
     BuiltValueNullFieldError.checkNotNull(gender, r'AnimalDto', 'gender');
     BuiltValueNullFieldError.checkNotNull(color, r'AnimalDto', 'color');
+    BuiltValueNullFieldError.checkNotNull(length, r'AnimalDto', 'length');
+    BuiltValueNullFieldError.checkNotNull(weight, r'AnimalDto', 'weight');
+    BuiltValueNullFieldError.checkNotNull(symptoms, r'AnimalDto', 'symptoms');
     BuiltValueNullFieldError.checkNotNull(day, r'AnimalDto', 'day');
     BuiltValueNullFieldError.checkNotNull(month, r'AnimalDto', 'month');
     BuiltValueNullFieldError.checkNotNull(year, r'AnimalDto', 'year');
@@ -281,16 +285,20 @@ class AnimalDtoBuilder implements Builder<AnimalDto, AnimalDtoBuilder> {
           new _$AnimalDto._(
               name: BuiltValueNullFieldError.checkNotNull(
                   name, r'AnimalDto', 'name'),
-              breed: breed,
+              breed: BuiltValueNullFieldError.checkNotNull(
+                  breed, r'AnimalDto', 'breed'),
               type: BuiltValueNullFieldError.checkNotNull(
                   type, r'AnimalDto', 'type'),
               gender: BuiltValueNullFieldError.checkNotNull(
                   gender, r'AnimalDto', 'gender'),
               color: BuiltValueNullFieldError.checkNotNull(
                   color, r'AnimalDto', 'color'),
-              length: length,
-              weight: weight,
-              symptoms: symptoms,
+              length: BuiltValueNullFieldError.checkNotNull(
+                  length, r'AnimalDto', 'length'),
+              weight: BuiltValueNullFieldError.checkNotNull(
+                  weight, r'AnimalDto', 'weight'),
+              symptoms: BuiltValueNullFieldError.checkNotNull(
+                  symptoms, r'AnimalDto', 'symptoms'),
               day: BuiltValueNullFieldError.checkNotNull(
                   day, r'AnimalDto', 'day'),
               month: BuiltValueNullFieldError.checkNotNull(
