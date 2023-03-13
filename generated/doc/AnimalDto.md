@@ -9,13 +9,13 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
-**breed** | **String** |  | [optional] 
+**breed** | **String** |  | 
 **type** | **String** |  | 
 **gender** | **String** |  | 
 **color** | **String** |  | 
-**length** | **double** |  | [optional] 
-**weight** | **double** |  | [optional] 
-**symptoms** | **String** |  | [optional] 
+**length** | **double** |  | 
+**weight** | **double** |  | 
+**symptoms** | **String** |  | 
 **day** | **int** |  | 
 **month** | **int** |  | 
 **year** | **int** |  | 

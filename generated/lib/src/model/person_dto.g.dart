@@ -6,13 +6,73 @@ part of 'person_dto.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const PersonDtoUserTitleEnum _$personDtoUserTitleEnum_mr =
+    const PersonDtoUserTitleEnum._('mr');
+const PersonDtoUserTitleEnum _$personDtoUserTitleEnum_ms =
+    const PersonDtoUserTitleEnum._('ms');
+const PersonDtoUserTitleEnum _$personDtoUserTitleEnum_unknown =
+    const PersonDtoUserTitleEnum._('unknown');
+
+PersonDtoUserTitleEnum _$personDtoUserTitleEnumValueOf(String name) {
+  switch (name) {
+    case 'mr':
+      return _$personDtoUserTitleEnum_mr;
+    case 'ms':
+      return _$personDtoUserTitleEnum_ms;
+    case 'unknown':
+      return _$personDtoUserTitleEnum_unknown;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<PersonDtoUserTitleEnum> _$personDtoUserTitleEnumValues =
+    new BuiltSet<PersonDtoUserTitleEnum>(const <PersonDtoUserTitleEnum>[
+  _$personDtoUserTitleEnum_mr,
+  _$personDtoUserTitleEnum_ms,
+  _$personDtoUserTitleEnum_unknown,
+]);
+
+Serializer<PersonDtoUserTitleEnum> _$personDtoUserTitleEnumSerializer =
+    new _$PersonDtoUserTitleEnumSerializer();
+
+class _$PersonDtoUserTitleEnumSerializer
+    implements PrimitiveSerializer<PersonDtoUserTitleEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'mr': 'Mr',
+    'ms': 'Ms',
+    'unknown': 'Unknown',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'Mr': 'mr',
+    'Ms': 'ms',
+    'Unknown': 'unknown',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[PersonDtoUserTitleEnum];
+  @override
+  final String wireName = 'PersonDtoUserTitleEnum';
+
+  @override
+  Object serialize(Serializers serializers, PersonDtoUserTitleEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  PersonDtoUserTitleEnum deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      PersonDtoUserTitleEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$PersonDto extends PersonDto {
   @override
-  final String userTitle;
+  final PersonDtoUserTitleEnum userTitle;
   @override
   final String lastname;
   @override
-  final String? firstname;
+  final String firstname;
   @override
   final int birthDay;
   @override
@@ -38,7 +98,7 @@ class _$PersonDto extends PersonDto {
   _$PersonDto._(
       {required this.userTitle,
       required this.lastname,
-      this.firstname,
+      required this.firstname,
       required this.birthDay,
       required this.birthMonth,
       required this.birthYear,
@@ -51,6 +111,7 @@ class _$PersonDto extends PersonDto {
       : super._() {
     BuiltValueNullFieldError.checkNotNull(userTitle, r'PersonDto', 'userTitle');
     BuiltValueNullFieldError.checkNotNull(lastname, r'PersonDto', 'lastname');
+    BuiltValueNullFieldError.checkNotNull(firstname, r'PersonDto', 'firstname');
     BuiltValueNullFieldError.checkNotNull(birthDay, r'PersonDto', 'birthDay');
     BuiltValueNullFieldError.checkNotNull(
         birthMonth, r'PersonDto', 'birthMonth');
@@ -132,9 +193,10 @@ class _$PersonDto extends PersonDto {
 class PersonDtoBuilder implements Builder<PersonDto, PersonDtoBuilder> {
   _$PersonDto? _$v;
 
-  String? _userTitle;
-  String? get userTitle => _$this._userTitle;
-  set userTitle(String? userTitle) => _$this._userTitle = userTitle;
+  PersonDtoUserTitleEnum? _userTitle;
+  PersonDtoUserTitleEnum? get userTitle => _$this._userTitle;
+  set userTitle(PersonDtoUserTitleEnum? userTitle) =>
+      _$this._userTitle = userTitle;
 
   String? _lastname;
   String? get lastname => _$this._lastname;
@@ -226,7 +288,8 @@ class PersonDtoBuilder implements Builder<PersonDto, PersonDtoBuilder> {
                 userTitle, r'PersonDto', 'userTitle'),
             lastname: BuiltValueNullFieldError.checkNotNull(
                 lastname, r'PersonDto', 'lastname'),
-            firstname: firstname,
+            firstname: BuiltValueNullFieldError.checkNotNull(
+                firstname, r'PersonDto', 'firstname'),
             birthDay: BuiltValueNullFieldError.checkNotNull(
                 birthDay, r'PersonDto', 'birthDay'),
             birthMonth: BuiltValueNullFieldError.checkNotNull(
@@ -241,8 +304,7 @@ class PersonDtoBuilder implements Builder<PersonDto, PersonDtoBuilder> {
                 streetAndHouseNumber, r'PersonDto', 'streetAndHouseNumber'),
             postalCode: BuiltValueNullFieldError.checkNotNull(
                 postalCode, r'PersonDto', 'postalCode'),
-            city: BuiltValueNullFieldError.checkNotNull(
-                city, r'PersonDto', 'city'),
+            city: BuiltValueNullFieldError.checkNotNull(city, r'PersonDto', 'city'),
             country: BuiltValueNullFieldError.checkNotNull(country, r'PersonDto', 'country'));
     replace(_$result);
     return _$result;

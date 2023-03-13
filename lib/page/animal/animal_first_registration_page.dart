@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:myveterinary/widgets/double_button.dart';
 import 'package:openapi/openapi.dart';
 import '/controller/animal_controller.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,18 @@ import '/utils/util_export.dart';
 import '/navigation/routes.dart';
 import 'package:get/get.dart';
 
-class AnimalFirstRegistrationPage extends GetView<AnimalController> {
-  const AnimalFirstRegistrationPage({Key? key}) : super(key: key);
+class AnimalFirstRegistrationPage extends StatelessWidget {
+  const AnimalFirstRegistrationPage({Key? key, required this.controller}) : super(key: key);
+  final AnimalController controller;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final formKey = controller.animalFirstPageFormKey;
+    final value = formKey.currentState?.value;
     return Container(
-      height: Get.height,
-      width: Get.width,
+      height: size.height,
+      width: size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/rottweiler.jpeg'),
@@ -44,102 +48,68 @@ class AnimalFirstRegistrationPage extends GetView<AnimalController> {
                         size: 25.0,
                         fontWeight: FontWeight.w500,
                       ),
-                      AppSpace(height: Get.height * 0.05),
+                      AppSpace(height: size.height * 0.05),
                       AppFormBuilderTextField(
                         name: AppFieldName.animalName,
                         hintText: AppFieldName.animalName.capitalizeFirst!,
                         keyboardType: TextInputType.name,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value) ||
-                                AppValidators.nameVal.hasMatch(value!)),
+                                !AppValidators.nameVal.hasMatch(value!)),
+                        initialValue: value?[AppFieldName.animalName],
                         responseToValidation: AnimalErrorMessage.name,
                       ),
-                      AppSpace(height: Get.height * 0.01),
+                      AppSpace(height: size.height * 0.01),
                       AppFormBuilderTextField(
                         name: AppFieldName.breed,
                         hintText: AppFieldName.breed.capitalizeFirst!,
                         keyboardType: TextInputType.name,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value) ||
-                                AppValidators.nameVal.hasMatch(value!)),
+                                !AppValidators.nameVal.hasMatch(value!)),
+                        initialValue: value?[AppFieldName.breed],
                         responseToValidation: AnimalErrorMessage.breed,
                       ),
-                      AppSpace(height: Get.height * 0.01),
+                      AppSpace(height: size.height * 0.01),
                       AppFormBuilderTextField(
                         name: AppFieldName.type,
                         hintText: AppFieldName.type.capitalizeFirst!,
                         keyboardType: TextInputType.name,
-                        appValidation: (value) {
-                          if (value != null) {
-                            return (AppValidators.nameVal.hasMatch(value));
-                          }
-                          return false;
-                        },
+                        appValidation: (value) =>
+                        (AppValidators.isBlank(value) ||
+                            !AppValidators.nameVal.hasMatch(value!)),
+                        initialValue: value?[AppFieldName.type],
                         responseToValidation: AnimalErrorMessage.type,
                       ),
-                      AppSpace(height: Get.height * 0.01),
+                      AppSpace(height: size.height * 0.01),
                       AppDatePicker(
                         name: AppFieldName.birthdate,
-                        isAnimal: false,
+                        isAnimal: true,
                         appValidation: (value) =>
                             (AppValidators.isBlank(value.toString()) ||
                                 AppValidators.isDateBlank(value)),
+                        initialValue: value?[AppFieldName.birthdate],
                         responseToValidation: AnimalErrorMessage.birthdate,
                       ),
-                      AppSpace(height: Get.height * 0.01),
+                      AppSpace(height: size.height * 0.01),
                       AppDropDownBuilder(
                         name: AppFieldName.gender,
                         formKey: formKey,
+                        initialValue: value?[AppFieldName.gender],
                         elements: AnimalDtoGenderEnum.values.toList(),
                       ),
-                      AppSpace(height: Get.height * 0.05),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          CustomButton(
-                            textColor: Colors.white,
-                            elevation: 3,
-                            height: 60,
-                            width: Get.width / 3,
-                            radius: 30,
-                            color: Colors.deepOrangeAccent.withOpacity(0.8),
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: const Text(
-                              AppUtilsName.back,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          CustomButton(
-                            textColor: Colors.white,
-                            elevation: 3,
-                            height: 60,
-                            width: Get.width / 3,
-                            radius: 30,
-                            color: Colors.deepOrangeAccent.withOpacity(0.8),
-                            onPressed: () {
-                              final isValid =
-                                  formKey.currentState!.saveAndValidate();
-                              if (isValid) {
-                                Get.toNamed(
-                                    Routes.animalSecondRegistrationPage);
-                              }
-                            },
-                            child: const Text(
-                              AppUtilsName.next,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ],
+                      AppSpace(height: size.height * 0.05),
+                      DoubleButton(
+                        firstButtonText: AppUtilsName.back,
+                        secondButtonText: AppUtilsName.next,
+                        firstRoute: () => Get.back(),
+                        secondRoute: () {
+                          final isValid =
+                              formKey.currentState!.saveAndValidate();
+                          if (isValid) {
+                            Get.toNamed(Routes.animalSecondRegistrationPage);
+                          }
+                        },
                       ),
                     ],
                   ),

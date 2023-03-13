@@ -6,20 +6,23 @@ import 'package:intl/intl.dart';
 class AppDatePicker extends StatelessWidget {
   const AppDatePicker({
     Key? key,
+    this.initialValue,
     required this.name,
     required this.isAnimal,
-    required this.responseToValidation,
     required this.appValidation,
+    required this.responseToValidation,
   }) : super(key: key);
   final String name;
   final bool isAnimal;
-  final String responseToValidation;
+  final DateTime? initialValue;
   final bool Function(DateTime?) appValidation;
+  final String responseToValidation;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderDateTimePicker(
       name: name,
+      initialValue: initialValue,
       initialDate: DateTime.now(),
       currentDate: DateTime.now(),
       lastDate: DateTime(2100, 1, 1),

@@ -70,25 +70,25 @@ class _$Animal extends Animal {
   @override
   final String? id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? breed;
+  final String breed;
   @override
-  final String? type;
+  final String type;
   @override
-  final AnimalGenderEnum? gender;
+  final AnimalGenderEnum gender;
   @override
-  final String? color;
+  final String color;
   @override
-  final double? length;
+  final double length;
   @override
-  final double? weight;
+  final double weight;
   @override
-  final String? symptoms;
+  final String symptoms;
   @override
-  final Date? birthdate;
+  final Date birthdate;
   @override
-  final BuiltSet<Person>? animalOwners;
+  final BuiltSet<Person> animalOwners;
   @override
   final DateTime lastRegistration;
 
@@ -97,18 +97,29 @@ class _$Animal extends Animal {
 
   _$Animal._(
       {this.id,
-      this.name,
-      this.breed,
-      this.type,
-      this.gender,
-      this.color,
-      this.length,
-      this.weight,
-      this.symptoms,
-      this.birthdate,
-      this.animalOwners,
+      required this.name,
+      required this.breed,
+      required this.type,
+      required this.gender,
+      required this.color,
+      required this.length,
+      required this.weight,
+      required this.symptoms,
+      required this.birthdate,
+      required this.animalOwners,
       required this.lastRegistration})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'Animal', 'name');
+    BuiltValueNullFieldError.checkNotNull(breed, r'Animal', 'breed');
+    BuiltValueNullFieldError.checkNotNull(type, r'Animal', 'type');
+    BuiltValueNullFieldError.checkNotNull(gender, r'Animal', 'gender');
+    BuiltValueNullFieldError.checkNotNull(color, r'Animal', 'color');
+    BuiltValueNullFieldError.checkNotNull(length, r'Animal', 'length');
+    BuiltValueNullFieldError.checkNotNull(weight, r'Animal', 'weight');
+    BuiltValueNullFieldError.checkNotNull(symptoms, r'Animal', 'symptoms');
+    BuiltValueNullFieldError.checkNotNull(birthdate, r'Animal', 'birthdate');
+    BuiltValueNullFieldError.checkNotNull(
+        animalOwners, r'Animal', 'animalOwners');
     BuiltValueNullFieldError.checkNotNull(
         lastRegistration, r'Animal', 'lastRegistration');
   }
@@ -247,7 +258,7 @@ class AnimalBuilder implements Builder<Animal, AnimalBuilder> {
       _weight = $v.weight;
       _symptoms = $v.symptoms;
       _birthdate = $v.birthdate;
-      _animalOwners = $v.animalOwners?.toBuilder();
+      _animalOwners = $v.animalOwners.toBuilder();
       _lastRegistration = $v.lastRegistration;
       _$v = null;
     }
@@ -274,23 +285,32 @@ class AnimalBuilder implements Builder<Animal, AnimalBuilder> {
       _$result = _$v ??
           new _$Animal._(
               id: id,
-              name: name,
-              breed: breed,
-              type: type,
-              gender: gender,
-              color: color,
-              length: length,
-              weight: weight,
-              symptoms: symptoms,
-              birthdate: birthdate,
-              animalOwners: _animalOwners?.build(),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'Animal', 'name'),
+              breed: BuiltValueNullFieldError.checkNotNull(
+                  breed, r'Animal', 'breed'),
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, r'Animal', 'type'),
+              gender: BuiltValueNullFieldError.checkNotNull(
+                  gender, r'Animal', 'gender'),
+              color: BuiltValueNullFieldError.checkNotNull(
+                  color, r'Animal', 'color'),
+              length: BuiltValueNullFieldError.checkNotNull(
+                  length, r'Animal', 'length'),
+              weight: BuiltValueNullFieldError.checkNotNull(
+                  weight, r'Animal', 'weight'),
+              symptoms: BuiltValueNullFieldError.checkNotNull(
+                  symptoms, r'Animal', 'symptoms'),
+              birthdate: BuiltValueNullFieldError.checkNotNull(
+                  birthdate, r'Animal', 'birthdate'),
+              animalOwners: animalOwners.build(),
               lastRegistration: BuiltValueNullFieldError.checkNotNull(
                   lastRegistration, r'Animal', 'lastRegistration'));
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'animalOwners';
-        _animalOwners?.build();
+        animalOwners.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'Animal', _$failedField, e.toString());

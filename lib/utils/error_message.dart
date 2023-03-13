@@ -1,7 +1,7 @@
 class PersonErrorMessage {
   static const String lastname = 'Invalid Last Name ';
   static const String firstname = 'Invalid Firstname';
-  static const String birthdate = 'Invalid Birthdate';
+  static const String birthdate = 'You must at least 6 years old';
   static const String email = 'Invalid Email';
   static const String streetAndHouseNumber = 'Invalid Street And House Number';
   static const String city = 'Invalid City';

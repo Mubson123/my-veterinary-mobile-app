@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         title: 'My Veterinary Flutter App',
         debugShowCheckedModeBanner: false,
         theme: MyVeterinaryAppThemes.light(),
-        initialRoute: Routes.homePage,
+        initialRoute: Routes.splashPage,
         unknownRoute: GetPage(
           name: Routes.unknownPage,
           page: () => const UnknownRoutePage(),

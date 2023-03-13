@@ -38,6 +38,7 @@ class MyVeterinaryAppThemes {
       fontWeight: FontWeight.normal,
       color: Colors.deepOrangeAccent,
     ),
+
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -83,9 +84,10 @@ class MyVeterinaryAppThemes {
       primaryColor: Colors.white,
       primarySwatch: Colors.deepOrange,
       brightness: Brightness.light,
-      highlightColor: Colors.transparent,
+      highlightColor: Colors.white.withOpacity(0.2),
       hoverColor: Colors.transparent,
-      splashColor: Colors.transparent,
+      disabledColor: Colors.grey,
+      splashColor: Colors.white.withOpacity(0.2),
       backgroundColor: Colors.deepOrangeAccent,
       errorColor: Colors.red,
       checkboxTheme: CheckboxThemeData(

@@ -1,30 +1,34 @@
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/form_builder_name.dart';
+
 class AppFormBuilderTextField extends StatelessWidget {
   const AppFormBuilderTextField({
     Key? key,
-    this.maxLines,
     required this.name,
-    required this.keyboardType,
     required this.hintText,
-    required this.responseToValidation,
+    this.initialValue,
+    required this.keyboardType,
     required this.appValidation,
+    required this.responseToValidation,
   }) : super(key: key);
   final String name;
   final String hintText;
-  final int? maxLines;
+  final String? initialValue;
   final TextInputType keyboardType;
-  final String responseToValidation;
   final bool Function(String?) appValidation;
+  final String responseToValidation;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: name,
-      maxLines: maxLines,
+      maxLines: name == AppFieldName.symptoms ? 3 : null,
       keyboardType: keyboardType,
       autocorrect: false,
+      initialValue: initialValue,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       style: const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w400,

@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import '../../controller/welcome_controller.dart';
 import '../../widgets/space.dart';
-import '/controller/app_state_controller.dart';
 import '/utils/form_builder_name.dart';
 
 class SplashPage extends StatelessWidget {
@@ -11,9 +11,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: Get.height,
-      width: Get.width,
+      height: size.height,
+      width: size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/best-friends.jpeg'),
@@ -25,7 +26,7 @@ class SplashPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           restorationId: 'splash_page',
-          body: GetBuilder<AppStateController>(builder: (controller) {
+          body: GetBuilder<WelcomeController>(builder: (controller) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,18 +40,18 @@ class SplashPage extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         color: Colors.deepOrangeAccent.withOpacity(0.99),
-                        fontSize: Get.height * 0.06,
+                        fontSize: size.height * 0.06,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
                   ],
                 ),
-                AppSpace(height: Get.height * 0.02),
+                AppSpace(height: size.height * 0.02),
                 Text(
                   AppUtilsName.welcome,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.99),
-                    fontSize: Get.height * 0.05,
+                    fontSize: size.height * 0.05,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
