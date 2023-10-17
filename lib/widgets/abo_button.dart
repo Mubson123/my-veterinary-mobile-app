@@ -21,7 +21,7 @@ class _AboButtonState extends State<AboButton> {
         height: 40,
         minWidth: 20,
         textColor: Theme.of(context).primaryColor,
-        color: isAbo ? Theme.of(context).backgroundColor : widget.color,
+        color: isAbo ? Theme.of(context).colorScheme.background : widget.color,
         disabledColor: Colors.grey,
         elevation: 0.0,
         shape: RoundedRectangleBorder(

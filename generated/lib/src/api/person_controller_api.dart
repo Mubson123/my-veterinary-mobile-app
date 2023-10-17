@@ -68,9 +68,10 @@ class PersonControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -82,22 +83,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponsePerson _responseData;
+    ResponsePerson? _responseData;
 
     try {
-      const _responseType = FullType(ResponsePerson);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponsePerson),
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponsePerson>(
@@ -154,22 +156,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponsePerson _responseData;
+    ResponsePerson? _responseData;
 
     try {
-      const _responseType = FullType(ResponsePerson);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponsePerson),
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponsePerson>(
@@ -228,22 +231,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponsePerson _responseData;
+    ResponsePerson? _responseData;
 
     try {
-      const _responseType = FullType(ResponsePerson);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponsePerson),
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponsePerson>(
@@ -300,22 +304,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponsePerson> _responseData;
+    BuiltList<ResponsePerson>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponsePerson)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponsePerson)]),
       ) as BuiltList<ResponsePerson>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponsePerson>>(
@@ -374,22 +379,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponsePerson _responseData;
+    ResponsePerson? _responseData;
 
     try {
-      const _responseType = FullType(ResponsePerson);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponsePerson),
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponsePerson>(
@@ -455,9 +461,10 @@ class PersonControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -469,22 +476,23 @@ class PersonControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponsePerson _responseData;
+    ResponsePerson? _responseData;
 
     try {
-      const _responseType = FullType(ResponsePerson);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponsePerson),
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponsePerson>(

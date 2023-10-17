@@ -68,9 +68,10 @@ class AnimalControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -82,22 +83,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAnimal _responseData;
+    ResponseAnimal? _responseData;
 
     try {
-      const _responseType = FullType(ResponseAnimal);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseAnimal),
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseAnimal>(
@@ -154,22 +156,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAnimal _responseData;
+    ResponseAnimal? _responseData;
 
     try {
-      const _responseType = FullType(ResponseAnimal);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseAnimal),
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseAnimal>(
@@ -228,22 +231,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAnimal _responseData;
+    ResponseAnimal? _responseData;
 
     try {
-      const _responseType = FullType(ResponseAnimal);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseAnimal),
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseAnimal>(
@@ -300,22 +304,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseAnimal> _responseData;
+    BuiltList<ResponseAnimal>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseAnimal)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseAnimal)]),
       ) as BuiltList<ResponseAnimal>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseAnimal>>(
@@ -374,22 +379,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAnimal _responseData;
+    ResponseAnimal? _responseData;
 
     try {
-      const _responseType = FullType(ResponseAnimal);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseAnimal),
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseAnimal>(
@@ -448,22 +454,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseAnimal> _responseData;
+    BuiltList<ResponseAnimal>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseAnimal)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseAnimal)]),
       ) as BuiltList<ResponseAnimal>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseAnimal>>(
@@ -529,9 +536,10 @@ class AnimalControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -543,22 +551,23 @@ class AnimalControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseAnimal _responseData;
+    ResponseAnimal? _responseData;
 
     try {
-      const _responseType = FullType(ResponseAnimal);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseAnimal),
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseAnimal>(
