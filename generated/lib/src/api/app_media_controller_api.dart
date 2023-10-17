@@ -61,22 +61,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseMedia _responseData;
+    ResponseMedia? _responseData;
 
     try {
-      const _responseType = FullType(ResponseMedia);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseMedia),
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseMedia>(
@@ -135,22 +136,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseMedia _responseData;
+    ResponseMedia? _responseData;
 
     try {
-      const _responseType = FullType(ResponseMedia);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseMedia),
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseMedia>(
@@ -209,22 +211,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseMedia _responseData;
+    ResponseMedia? _responseData;
 
     try {
-      const _responseType = FullType(ResponseMedia);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseMedia),
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseMedia>(
@@ -283,22 +286,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseMedia _responseData;
+    ResponseMedia? _responseData;
 
     try {
-      const _responseType = FullType(ResponseMedia);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseMedia),
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseMedia>(
@@ -355,22 +359,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseMedia> _responseData;
+    BuiltList<ResponseMedia>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseMedia)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseMedia)]),
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseMedia>>(
@@ -429,22 +434,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseMedia> _responseData;
+    BuiltList<ResponseMedia>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseMedia)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseMedia)]),
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseMedia>>(
@@ -503,22 +509,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseMedia> _responseData;
+    BuiltList<ResponseMedia>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseMedia)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseMedia)]),
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseMedia>>(
@@ -577,22 +584,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<String> _responseData;
+    BuiltList<String>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(String)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       ) as BuiltList<String>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<String>>(
@@ -659,9 +667,10 @@ class AppMediaControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -673,22 +682,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseMedia> _responseData;
+    BuiltList<ResponseMedia>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseMedia)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseMedia)]),
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseMedia>>(
@@ -755,9 +765,10 @@ class AppMediaControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -769,22 +780,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<ResponseMedia> _responseData;
+    BuiltList<ResponseMedia>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(ResponseMedia)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(ResponseMedia)]),
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<ResponseMedia>>(
@@ -851,9 +863,10 @@ class AppMediaControllerApi {
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -865,22 +878,23 @@ class AppMediaControllerApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ResponseMedia _responseData;
+    ResponseMedia? _responseData;
 
     try {
-      const _responseType = FullType(ResponseMedia);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ResponseMedia),
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ResponseMedia>(

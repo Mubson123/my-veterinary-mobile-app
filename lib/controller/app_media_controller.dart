@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart' as f;
+import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:openapi/openapi.dart';
@@ -26,7 +26,7 @@ class AppMediaController extends GetxController {
     return response.data!.toList();
   }
 
-  Future<List<ResponseMedia>> storeMediaByPersonId(String id, List<f.MultipartFile> files) async {
+  Future<List<ResponseMedia>> storeMediaByPersonId(String id, List<dio.MultipartFile> files) async {
     final response = await _api.storeMediaByPersonId(id: id, files: BuiltList(files));
     if (response.statusCode != 204) {
       throw Exception();
@@ -36,7 +36,7 @@ class AppMediaController extends GetxController {
     return response.data!.toList();
   }
 
-  Future<List<ResponseMedia>> storeMediaByAninalId(String id, List<f.MultipartFile> files) async {
+  Future<List<ResponseMedia>> storeMediaByAnimalId(String id, List<dio.MultipartFile> files) async {
     final response = await _api.storeMediaByAninalId(id: id, files: BuiltList(files));
     if (response.statusCode != 204) {
       throw Exception();
@@ -76,7 +76,7 @@ class AppMediaController extends GetxController {
     return response.data!.toList();
   }
 
-  Future<ResponseMedia> updateMediaById(String id, f.MultipartFile file) async {
+  Future<ResponseMedia> updateMediaById(String id, dio.MultipartFile file) async {
     final response = await _api.updateMediaById(id: id, file: file);
     if (response.statusCode != 201) {
       throw Exception();
