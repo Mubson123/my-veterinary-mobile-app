@@ -5,14 +5,14 @@ import '../utils/form_builder_name.dart';
 
 class AppFormBuilderTextField extends StatelessWidget {
   const AppFormBuilderTextField({
-    Key? key,
+    super.key,
     required this.name,
     required this.hintText,
     this.initialValue,
     required this.keyboardType,
     required this.appValidation,
     required this.responseToValidation,
-  }) : super(key: key);
+  });
   final String name;
   final String hintText;
   final String? initialValue;

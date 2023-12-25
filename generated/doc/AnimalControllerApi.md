@@ -33,7 +33,7 @@ final AnimalDto animalDto = ; // AnimalDto |
 try {
     final response = api.addAnimal(animalDto);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->addAnimal: $e\n');
 }
 ```
@@ -73,7 +73,7 @@ final api = Openapi().getAnimalControllerApi();
 try {
     final response = api.deleteAll1();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->deleteAll1: $e\n');
 }
 ```
@@ -111,7 +111,7 @@ final String id = id_example; // String |
 try {
     final response = api.deleteAnimal(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->deleteAnimal: $e\n');
 }
 ```
@@ -151,7 +151,7 @@ final api = Openapi().getAnimalControllerApi();
 try {
     final response = api.findAllAnimals();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->findAllAnimals: $e\n');
 }
 ```
@@ -189,7 +189,7 @@ final String id = id_example; // String |
 try {
     final response = api.findAnimalById(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->findAnimalById: $e\n');
 }
 ```
@@ -230,7 +230,7 @@ final String id = id_example; // String |
 try {
     final response = api.findAnimalsByOwnerId(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->findAnimalsByOwnerId: $e\n');
 }
 ```
@@ -272,7 +272,7 @@ final AnimalDto animalDto = ; // AnimalDto |
 try {
     final response = api.updateAnimal(id, animalDto);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AnimalControllerApi->updateAnimal: $e\n');
 }
 ```
