@@ -31,7 +31,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseMedia] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseMedia>> deleteAll({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -71,10 +71,10 @@ class AppMediaControllerApi {
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -105,7 +105,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseMedia] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseMedia>> deleteMediaByAnimalId({ 
     required String id,
     CancelToken? cancelToken,
@@ -115,7 +115,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -146,10 +146,10 @@ class AppMediaControllerApi {
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -180,7 +180,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseMedia] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseMedia>> deleteMediaById({ 
     required String id,
     CancelToken? cancelToken,
@@ -190,7 +190,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -221,10 +221,10 @@ class AppMediaControllerApi {
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -255,7 +255,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseMedia] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseMedia>> deleteMediaByPersonId({ 
     required String id,
     CancelToken? cancelToken,
@@ -265,7 +265,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -296,10 +296,10 @@ class AppMediaControllerApi {
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -329,7 +329,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseMedia>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseMedia>>> getAllMedia({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -369,10 +369,10 @@ class AppMediaControllerApi {
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -403,7 +403,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseMedia>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseMedia>>> getAllMediaByAnimalId({ 
     required String id,
     CancelToken? cancelToken,
@@ -413,7 +413,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -444,10 +444,10 @@ class AppMediaControllerApi {
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -478,7 +478,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseMedia>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseMedia>>> getAllMediaByPersonId({ 
     required String id,
     CancelToken? cancelToken,
@@ -488,7 +488,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -519,10 +519,10 @@ class AppMediaControllerApi {
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -553,7 +553,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<String>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<String>>> getMediaById({ 
     required String id,
     CancelToken? cancelToken,
@@ -563,7 +563,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/files/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/files/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -594,10 +594,10 @@ class AppMediaControllerApi {
       ) as BuiltList<String>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -629,7 +629,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseMedia>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseMedia>>> storeMediaByAninalId({ 
     required String id,
     required BuiltList<MultipartFile> files,
@@ -640,7 +640,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/animal/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -662,12 +662,12 @@ class AppMediaControllerApi {
       });
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -692,10 +692,10 @@ class AppMediaControllerApi {
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -727,7 +727,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseMedia>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseMedia>>> storeMediaByPersonId({ 
     required String id,
     required BuiltList<MultipartFile> files,
@@ -738,7 +738,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/person/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -760,12 +760,12 @@ class AppMediaControllerApi {
       });
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -790,10 +790,10 @@ class AppMediaControllerApi {
       ) as BuiltList<ResponseMedia>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -825,7 +825,7 @@ class AppMediaControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseMedia] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseMedia>> updateMediaById({ 
     required String id,
     required MultipartFile file,
@@ -836,7 +836,7 @@ class AppMediaControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/media/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/media/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -858,12 +858,12 @@ class AppMediaControllerApi {
       });
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -888,10 +888,10 @@ class AppMediaControllerApi {
       ) as ResponseMedia;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

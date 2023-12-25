@@ -8,6 +8,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/person_dto.dart';
 import 'package:openapi/src/model/response_person.dart';
 
@@ -32,7 +33,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponsePerson] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponsePerson>> addPerson({ 
     required PersonDto personDto,
     CancelToken? cancelToken,
@@ -63,12 +64,12 @@ class PersonControllerApi {
       _bodyData = _serializers.serialize(personDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -93,10 +94,10 @@ class PersonControllerApi {
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -126,7 +127,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponsePerson] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponsePerson>> deleteAllPerson({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -166,10 +167,10 @@ class PersonControllerApi {
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -200,7 +201,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponsePerson] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponsePerson>> deletePerson({ 
     required String id,
     CancelToken? cancelToken,
@@ -210,7 +211,7 @@ class PersonControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -241,10 +242,10 @@ class PersonControllerApi {
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -274,7 +275,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponsePerson>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponsePerson>>> findAllPersons({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -314,10 +315,10 @@ class PersonControllerApi {
       ) as BuiltList<ResponsePerson>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -348,7 +349,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponsePerson] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponsePerson>> findPersonById({ 
     required String id,
     CancelToken? cancelToken,
@@ -358,7 +359,7 @@ class PersonControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -389,10 +390,10 @@ class PersonControllerApi {
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -424,7 +425,7 @@ class PersonControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponsePerson] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponsePerson>> updatePerson({ 
     required String id,
     required PersonDto personDto,
@@ -435,7 +436,7 @@ class PersonControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/persons/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -456,12 +457,12 @@ class PersonControllerApi {
       _bodyData = _serializers.serialize(personDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -486,10 +487,10 @@ class PersonControllerApi {
       ) as ResponsePerson;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

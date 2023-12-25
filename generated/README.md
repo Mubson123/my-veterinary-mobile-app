@@ -52,7 +52,7 @@ final AnimalDto animalDto = ; // AnimalDto |
 try {
     final response = await api.addAnimal(animalDto);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print("Exception when calling AnimalControllerApi->addAnimal: $e\n");
 }
 

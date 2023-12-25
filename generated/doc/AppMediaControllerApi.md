@@ -36,7 +36,7 @@ final api = Openapi().getAppMediaControllerApi();
 try {
     final response = api.deleteAll();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->deleteAll: $e\n');
 }
 ```
@@ -74,7 +74,7 @@ final String id = id_example; // String |
 try {
     final response = api.deleteMediaByAnimalId(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->deleteMediaByAnimalId: $e\n');
 }
 ```
@@ -115,7 +115,7 @@ final String id = id_example; // String |
 try {
     final response = api.deleteMediaById(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->deleteMediaById: $e\n');
 }
 ```
@@ -156,7 +156,7 @@ final String id = id_example; // String |
 try {
     final response = api.deleteMediaByPersonId(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->deleteMediaByPersonId: $e\n');
 }
 ```
@@ -196,7 +196,7 @@ final api = Openapi().getAppMediaControllerApi();
 try {
     final response = api.getAllMedia();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->getAllMedia: $e\n');
 }
 ```
@@ -234,7 +234,7 @@ final String id = id_example; // String |
 try {
     final response = api.getAllMediaByAnimalId(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->getAllMediaByAnimalId: $e\n');
 }
 ```
@@ -275,7 +275,7 @@ final String id = id_example; // String |
 try {
     final response = api.getAllMediaByPersonId(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->getAllMediaByPersonId: $e\n');
 }
 ```
@@ -316,7 +316,7 @@ final String id = id_example; // String |
 try {
     final response = api.getMediaById(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->getMediaById: $e\n');
 }
 ```
@@ -358,7 +358,7 @@ final BuiltList<MultipartFile> files = /path/to/file.txt; // BuiltList<Multipart
 try {
     final response = api.storeMediaByAninalId(id, files);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->storeMediaByAninalId: $e\n');
 }
 ```
@@ -401,7 +401,7 @@ final BuiltList<MultipartFile> files = /path/to/file.txt; // BuiltList<Multipart
 try {
     final response = api.storeMediaByPersonId(id, files);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->storeMediaByPersonId: $e\n');
 }
 ```
@@ -444,7 +444,7 @@ final MultipartFile file = BINARY_DATA_HERE; // MultipartFile |
 try {
     final response = api.updateMediaById(id, file);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling AppMediaControllerApi->updateMediaById: $e\n');
 }
 ```

@@ -32,7 +32,7 @@ final PersonDto personDto = ; // PersonDto |
 try {
     final response = api.addPerson(personDto);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->addPerson: $e\n');
 }
 ```
@@ -72,7 +72,7 @@ final api = Openapi().getPersonControllerApi();
 try {
     final response = api.deleteAllPerson();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->deleteAllPerson: $e\n');
 }
 ```
@@ -110,7 +110,7 @@ final String id = id_example; // String |
 try {
     final response = api.deletePerson(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->deletePerson: $e\n');
 }
 ```
@@ -150,7 +150,7 @@ final api = Openapi().getPersonControllerApi();
 try {
     final response = api.findAllPersons();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->findAllPersons: $e\n');
 }
 ```
@@ -188,7 +188,7 @@ final String id = id_example; // String |
 try {
     final response = api.findPersonById(id);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->findPersonById: $e\n');
 }
 ```
@@ -230,7 +230,7 @@ final PersonDto personDto = ; // PersonDto |
 try {
     final response = api.updatePerson(id, personDto);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling PersonControllerApi->updatePerson: $e\n');
 }
 ```

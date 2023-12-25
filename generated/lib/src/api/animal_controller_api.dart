@@ -8,6 +8,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
+import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/animal_dto.dart';
 import 'package:openapi/src/model/response_animal.dart';
 
@@ -32,7 +33,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseAnimal] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseAnimal>> addAnimal({ 
     required AnimalDto animalDto,
     CancelToken? cancelToken,
@@ -63,12 +64,12 @@ class AnimalControllerApi {
       _bodyData = _serializers.serialize(animalDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -93,10 +94,10 @@ class AnimalControllerApi {
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -126,7 +127,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseAnimal] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseAnimal>> deleteAll1({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -166,10 +167,10 @@ class AnimalControllerApi {
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -200,7 +201,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseAnimal] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseAnimal>> deleteAnimal({ 
     required String id,
     CancelToken? cancelToken,
@@ -210,7 +211,7 @@ class AnimalControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -241,10 +242,10 @@ class AnimalControllerApi {
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -274,7 +275,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseAnimal>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseAnimal>>> findAllAnimals({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -314,10 +315,10 @@ class AnimalControllerApi {
       ) as BuiltList<ResponseAnimal>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -348,7 +349,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseAnimal] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseAnimal>> findAnimalById({ 
     required String id,
     CancelToken? cancelToken,
@@ -358,7 +359,7 @@ class AnimalControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -389,10 +390,10 @@ class AnimalControllerApi {
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -423,7 +424,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<ResponseAnimal>] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<BuiltList<ResponseAnimal>>> findAnimalsByOwnerId({ 
     required String id,
     CancelToken? cancelToken,
@@ -433,7 +434,7 @@ class AnimalControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/animals/owners/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/animals/owners/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -464,10 +465,10 @@ class AnimalControllerApi {
       ) as BuiltList<ResponseAnimal>;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -499,7 +500,7 @@ class AnimalControllerApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [ResponseAnimal] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<ResponseAnimal>> updateAnimal({ 
     required String id,
     required AnimalDto animalDto,
@@ -510,7 +511,7 @@ class AnimalControllerApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/api/veterinary/animals/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -531,12 +532,12 @@ class AnimalControllerApi {
       _bodyData = _serializers.serialize(animalDto, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -561,10 +562,10 @@ class AnimalControllerApi {
       ) as ResponseAnimal;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
